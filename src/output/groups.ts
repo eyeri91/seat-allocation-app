@@ -8,7 +8,8 @@ export const groups: Group[] = [
       "pax001",
       "pax008"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 124
   },
   {
     "id": "grp-2",
@@ -17,7 +18,8 @@ export const groups: Group[] = [
       "pax048",
       "pax094"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 299
   },
   {
     "id": "grp-3",
@@ -25,7 +27,8 @@ export const groups: Group[] = [
       "pax003",
       "pax050"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 154
   },
   {
     "id": "grp-4",
@@ -34,7 +37,8 @@ export const groups: Group[] = [
       "pax041",
       "pax013"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 228
   },
   {
     "id": "grp-5",
@@ -46,7 +50,8 @@ export const groups: Group[] = [
       "pax092",
       "pax045"
     ],
-    "size": 6
+    "size": 6,
+    "totalWeight": 515
   },
   {
     "id": "grp-6",
@@ -60,7 +65,8 @@ export const groups: Group[] = [
       "pax064",
       "pax095"
     ],
-    "size": 8
+    "size": 8,
+    "totalWeight": 618
   },
   {
     "id": "grp-7",
@@ -69,7 +75,8 @@ export const groups: Group[] = [
       "pax055",
       "pax083"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 233
   },
   {
     "id": "grp-8",
@@ -79,7 +86,8 @@ export const groups: Group[] = [
       "pax019",
       "pax054"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 314
   },
   {
     "id": "grp-9",
@@ -89,7 +97,8 @@ export const groups: Group[] = [
       "pax030",
       "pax011"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 297
   },
   {
     "id": "grp-10",
@@ -98,7 +107,8 @@ export const groups: Group[] = [
       "pax087",
       "pax068"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 231
   },
   {
     "id": "grp-11",
@@ -108,7 +118,8 @@ export const groups: Group[] = [
       "pax060",
       "pax100"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 362
   },
   {
     "id": "grp-12",
@@ -118,7 +129,8 @@ export const groups: Group[] = [
       "pax093",
       "pax069"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 292
   },
   {
     "id": "grp-13",
@@ -127,7 +139,8 @@ export const groups: Group[] = [
       "pax021",
       "pax081"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 239
   },
   {
     "id": "grp-14",
@@ -138,7 +151,8 @@ export const groups: Group[] = [
       "pax025",
       "pax098"
     ],
-    "size": 5
+    "size": 5,
+    "totalWeight": 340
   },
   {
     "id": "grp-15",
@@ -149,7 +163,8 @@ export const groups: Group[] = [
       "pax029",
       "pax066"
     ],
-    "size": 5
+    "size": 5,
+    "totalWeight": 357
   },
   {
     "id": "grp-16",
@@ -158,7 +173,8 @@ export const groups: Group[] = [
       "pax089",
       "pax043"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 201
   },
   {
     "id": "grp-17",
@@ -168,7 +184,8 @@ export const groups: Group[] = [
       "pax071",
       "pax024"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 296
   },
   {
     "id": "grp-18",
@@ -176,14 +193,16 @@ export const groups: Group[] = [
       "pax026",
       "pax078"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 167
   },
   {
     "id": "grp-19",
     "membersId": [
       "pax027"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 60
   },
   {
     "id": "grp-20",
@@ -193,7 +212,8 @@ export const groups: Group[] = [
       "pax034",
       "pax074"
     ],
-    "size": 4
+    "size": 4,
+    "totalWeight": 240
   },
   {
     "id": "grp-21",
@@ -201,7 +221,8 @@ export const groups: Group[] = [
       "pax032",
       "pax065"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 137
   },
   {
     "id": "grp-22",
@@ -209,7 +230,8 @@ export const groups: Group[] = [
       "pax033",
       "pax046"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 130
   },
   {
     "id": "grp-23",
@@ -217,7 +239,8 @@ export const groups: Group[] = [
       "pax035",
       "pax059"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 206
   },
   {
     "id": "grp-24",
@@ -228,7 +251,8 @@ export const groups: Group[] = [
       "pax079",
       "pax063"
     ],
-    "size": 5
+    "size": 5,
+    "totalWeight": 388
   },
   {
     "id": "grp-25",
@@ -236,7 +260,8 @@ export const groups: Group[] = [
       "pax039",
       "pax070"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 209
   },
   {
     "id": "grp-26",
@@ -244,21 +269,24 @@ export const groups: Group[] = [
       "pax042",
       "pax080"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 130
   },
   {
     "id": "grp-27",
     "membersId": [
       "pax044"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 50
   },
   {
     "id": "grp-28",
     "membersId": [
       "pax047"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 58
   },
   {
     "id": "grp-29",
@@ -267,35 +295,40 @@ export const groups: Group[] = [
       "pax082",
       "pax052"
     ],
-    "size": 3
+    "size": 3,
+    "totalWeight": 263
   },
   {
     "id": "grp-30",
     "membersId": [
       "pax051"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 95
   },
   {
     "id": "grp-31",
     "membersId": [
       "pax053"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 91
   },
   {
     "id": "grp-32",
     "membersId": [
       "pax067"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 56
   },
   {
     "id": "grp-33",
     "membersId": [
       "pax073"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 73
   },
   {
     "id": "grp-34",
@@ -303,13 +336,15 @@ export const groups: Group[] = [
       "pax077",
       "pax088"
     ],
-    "size": 2
+    "size": 2,
+    "totalWeight": 125
   },
   {
     "id": "grp-35",
     "membersId": [
       "pax086"
     ],
-    "size": 1
+    "size": 1,
+    "totalWeight": 84
   }
 ];

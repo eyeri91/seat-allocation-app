@@ -5,6 +5,9 @@ export function makeGroup(passengers: Passenger[]): Group[] {
     const groups:Group[] = [];
     const visited = new Set<string>();
 
+    const passengerMap = new Map<string, Passenger>();
+    for (const p of passengers) passengerMap.set(p.id, p)
+
     for (const passenger of passengers) {
         if(visited.has(passenger.id)) continue;
 
@@ -14,11 +17,18 @@ export function makeGroup(passengers: Passenger[]): Group[] {
 
         const membersId = [...members];
         members.forEach(id=>visited.add(id))
+
+        let totalWeight = 0;
+        for (const id of membersId) {
+            const member =passengerMap.get(id);
+            if(member) totalWeight += member.weight
+        }
         
         groups.push({
             id: `grp-${groups.length + 1}`,
             membersId,
-            size: membersId.length
+            size: membersId.length,
+            totalWeight
         })
 
     }
