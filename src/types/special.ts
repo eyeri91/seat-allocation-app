@@ -1,6 +1,6 @@
 import type { Passenger } from "./passenger.js"
 
-export type SpecialCategory = ""|"WCHR"|"UMNR"|"Muslim"
+export type Special = ""|"WCHR"|"UMNR"|"Muslim"
 
 
 export interface SpecialFlags {
@@ -11,3 +11,4 @@ export interface SpecialFlags {
 }
 
 export type SpecialPassenger = Passenger & SpecialFlags
+
