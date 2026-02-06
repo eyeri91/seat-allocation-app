@@ -1,3 +1,4 @@
+
 import type { Group } from "../types/groups.js";
 
 export const groups: Group[] = [

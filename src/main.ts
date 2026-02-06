@@ -8,19 +8,27 @@ import type { Passenger } from "./types/passenger.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const jsonPath = path.join(__dirname, "../data/dataset.json");
-const raw = fs.readFileSync(jsonPath, "utf-8");
+const inputPath = path.join(__dirname, "../data/dataset.json");
 
+const outputPath = path.join(__dirname, "./output/groups.ts");
+
+const raw = fs.readFileSync(inputPath, "utf-8");
 const passengers: Passenger[] = JSON.parse(raw);
 
 const groups = makeGroup(passengers);
 
-const output = `
-import { Group } from "../types.js";
+const sortedData = `
+import type { Group } from "../types/groups.js";
 
 export const groups: Group[] = ${JSON.stringify(groups, null, 2)};
 `;
 
-const outPath = path.join(__dirname, "./output/groups.ts");
-fs.mkdirSync(path.dirname(outPath), { recursive: true });
-fs.writeFileSync(outPath, output.trim());
+const prev = fs.existsSync(outputPath)
+    ? fs.readFileSync(outputPath, "utf-8")
+    : "";
+
+if (prev !== sortedData) {
+    fs.writeFileSync(outputPath, sortedData)
+} else {
+    console.log("Sorted group.ts unchanged")
+}
