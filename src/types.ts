@@ -4,8 +4,10 @@ export interface Passenger {
     group: string[],
     weight: number,
     gender: Gender,
-    special: string,
+    special: SpecialCategory,
     seat: string
 }
 
 export type Gender = "M"|"F"
+
+export type SpecialCategory = ""|"WCHR"|"UMNR"|"Muslim"
