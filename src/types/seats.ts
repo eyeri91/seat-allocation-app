@@ -1,4 +1,5 @@
 export type Row = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export const ROW: Row[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export type SeatCode =
   | "A"
@@ -11,6 +12,19 @@ export type SeatCode =
   | "H"
   | "J"
   | "K";
+
+export const SEATCODE: SeatCode[] = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "J",
+  "K",
+];
 
 export type AisleSeatCode = "C" | "D" | "G" | "H";
 
