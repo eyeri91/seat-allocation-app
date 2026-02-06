@@ -8,16 +8,12 @@ export function makeGroup(passengers: Passenger[]): Group[] {
     for (const passenger of passengers) {
         if(visited.has(passenger.id)) continue;
 
-        const membersId: string[] = [];
-        membersId.push(passenger.id);
-        visited.add(passenger.id)
-        
-        if (passenger.group.length >0) {
-            for (const member of passenger.group) {
-                membersId.push(member)
-                visited.add(member)
-            }
-        }
+        const members = new Set<string>();
+        members.add(passenger.id);
+        for (const m of passenger.group) members.add(m);
+
+        const membersId = [...members];
+        members.forEach(id=>visited.add(id))
         
         groups.push({
             id: `grp-${groups.length + 1}`,

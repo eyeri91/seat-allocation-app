@@ -2,5 +2,6 @@
 export interface Group {
     id: string,
     membersId: string[],
-    size: number
+    size: number,
+    // totalWeight: number
 }
