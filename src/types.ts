@@ -3,7 +3,9 @@ export interface Passenger {
     id: string,
     group: string[],
     weight: number,
-    gender: "M"|"F",
+    gender: Gender,
     special: string,
     seat: string
 }
+
+export type Gender = "M"|"F"
