@@ -1,8 +1,7 @@
 import {
   type AisleSeatCode,
-  type Row,
   type Seat,
-  type SeatCode,
+  type SeatMap,
   type SeatNumber,
   AISLE_SEAT_CODES,
   ROW,
@@ -21,11 +20,15 @@ export function generateAllSeatNumbers(): SeatNumber[] {
       seats.push(seatNumber as SeatNumber);
     }
   }
-  const seatNumber = [...seats];
+  const seatNumbers = [...seats];
 
-  return seatNumber;
+  return seatNumbers;
 }
 
-// export function createEmptySeatMap(): SeatMap {
-//   return seatMap;
-// }
+export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
+  const seatMap: SeatMap = new Map();
+  for (const seat of seatNumbers) {
+    seatMap.set(seat, null);
+  }
+  return seatMap;
+}
