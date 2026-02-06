@@ -20,3 +20,7 @@ export interface Seat {
   row: Row;
   code: SeatCode;
 }
+
+export type SeatNumber = `${Row}${SeatCode}`;
+
+export type SeatMap = Map<SeatNumber, string | null>;
