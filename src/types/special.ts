@@ -11,4 +11,4 @@ export interface SpecialFlags {
   isFemaleMuslim: boolean;
 }
 
-export type PassengersWithFlags = Passenger & SpecialFlags;
+export type PassengerWithFlags = Passenger & SpecialFlags;

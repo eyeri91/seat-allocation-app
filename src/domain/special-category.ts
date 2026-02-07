@@ -6,13 +6,11 @@ import type {
   Special,
   SPECIAL,
   SpecialFlags,
-  PassengersWithFlags,
+  PassengerWithFlags,
 } from "../types/special.js";
 
-export function addSpecialFlags(
-  passengers: Passenger[],
-): PassengersWithFlags[] {
-  const passengersWithFlags: PassengersWithFlags[] = [];
+export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
+  const passengersWithFlags: PassengerWithFlags[] = [];
 
   for (const p of passengers) {
     passengersWithFlags.push({
