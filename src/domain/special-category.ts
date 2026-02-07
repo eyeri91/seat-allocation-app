@@ -1,10 +1,15 @@
 import type { Passenger } from "../types/passenger.js";
+import type { Group } from "../types/groups.js";
 import type {
   Special,
   SPECIAL,
   SpecialFlags,
   PassengerWithFlags,
 } from "../types/special.js";
+import { buildPassengersMapById } from "./passenger.js";
+import { passengersWithFlags } from "../output/passengersWithFlags.js";
+
+const passengersBydIds = buildPassengersMapById(passengersWithFlags);
 
 export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
   const passengersWithFlags: PassengerWithFlags[] = [];
@@ -23,4 +28,17 @@ export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
 
 export function isFemale(passenger: PassengerWithFlags): boolean {
   return passenger.gender === "F";
+}
+
+export function getWCHRCount(
+  group: Group,
+  passengersBydIds: Map<string, PassengerWithFlags>,
+): { groupId: string; count: number } {
+  let count = 0;
+
+  for (const id of group.membersIds) {
+    const passenger = passengersBydIds.get(id);
+    if (passenger?.isWCHR) count += 1;
+  }
+  return { groupId: group.id, count };
 }

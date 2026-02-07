@@ -1,14 +1,13 @@
-import type { Special } from "./special.js"
+import type { Special } from "./special.js";
 
 export interface Passenger {
-    name: string,
-    id: string,
-    group: string[],
-    weight: number,
-    gender: Gender,
-    special: Special,
-    seat: string
+  name: string;
+  id: string;
+  group: string[];
+  weight: number;
+  gender: Gender;
+  special: Special;
+  seat: string;
 }
 
-export type Gender = "M"|"F"
-
+export type Gender = "M" | "F";
