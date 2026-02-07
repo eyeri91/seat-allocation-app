@@ -40,3 +40,7 @@ export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
   }
   return seatMap;
 }
+
+// export function checkLeftSeat(assignedPassengerMap: AssignedPassengerMap):AssignedPassenger{
+
+// }
