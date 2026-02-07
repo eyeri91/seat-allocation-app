@@ -8,7 +8,7 @@ import { buildPassengersMapById } from "./domain/passenger.utils.js";
 import type { Passenger } from "./types/passenger.js";
 import { createAssignedPassengerMap } from "./domain/seatmap.utils.js";
 import { passengersWithFlags } from "./output/passengersWithFlags.js";
-// import { error } from "node:console";
+import { getWCHRIdsInGroup } from "./domain/special.utils.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,19 +21,6 @@ const passengersByIds = buildPassengersMapById(passengersWithFlags);
 
 const assignedPassengerMap = createAssignedPassengerMap();
 for (const group of sortedGroupByWCHRNumbers) {
+  // get WCHR ids from each group
+  //   tryAssignSeatToPassenger
 }
-
-// const firstGroup = sortedGroupByWCHRNumbers[0];
-// if (!firstGroup) {
-//   throw error;
-// } else {
-//   const membersIds = firstGroup.membersIds;
-//   let count = 0;
-//   for (const id of membersIds) {
-//     const pas = passengersByIds.get(id);
-
-//     if (pas?.isWCHR) count += 1;
-//   }
-
-//   console.log(count);
-// }

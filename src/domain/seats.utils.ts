@@ -36,3 +36,15 @@ export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
   }
   return seatMap;
 }
+
+export function generateAllAisleSeatNumbers(): SeatNumber[] {
+  const results: SeatNumber[] = [];
+
+  for (const r of ROW) {
+    for (const code of AISLE_SEAT_CODES) {
+      results.push(`${r}${code}` as SeatNumber);
+    }
+  }
+
+  return results;
+}
