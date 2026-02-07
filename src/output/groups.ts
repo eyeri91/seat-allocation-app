@@ -24,7 +24,7 @@ export const groups: Group[] = [
     ],
     "size": 3,
     "totalWeight": 299,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -68,7 +68,7 @@ export const groups: Group[] = [
     ],
     "size": 6,
     "totalWeight": 515,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": true,
     "hasFemaleMuslim": true
@@ -87,7 +87,7 @@ export const groups: Group[] = [
     ],
     "size": 8,
     "totalWeight": 618,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -116,7 +116,7 @@ export const groups: Group[] = [
     ],
     "size": 4,
     "totalWeight": 314,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": true,
     "hasFemaleMuslim": true
@@ -131,7 +131,7 @@ export const groups: Group[] = [
     ],
     "size": 4,
     "totalWeight": 297,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": true,
     "hasFemaleMuslim": true
@@ -145,7 +145,7 @@ export const groups: Group[] = [
     ],
     "size": 3,
     "totalWeight": 231,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -175,7 +175,7 @@ export const groups: Group[] = [
     ],
     "size": 4,
     "totalWeight": 292,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -221,7 +221,7 @@ export const groups: Group[] = [
     ],
     "size": 5,
     "totalWeight": 357,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -235,7 +235,7 @@ export const groups: Group[] = [
     ],
     "size": 3,
     "totalWeight": 201,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -250,7 +250,7 @@ export const groups: Group[] = [
     ],
     "size": 4,
     "totalWeight": 296,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -290,7 +290,7 @@ export const groups: Group[] = [
     ],
     "size": 4,
     "totalWeight": 240,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false
@@ -305,8 +305,8 @@ export const groups: Group[] = [
     "totalWeight": 137,
     "hasWCHR": false,
     "hasUMNR": false,
-    "hasMuslim": false,
-    "hasFemaleMuslim": false
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-22",
@@ -319,7 +319,7 @@ export const groups: Group[] = [
     "hasWCHR": false,
     "hasUMNR": false,
     "hasMuslim": true,
-    "hasFemaleMuslim": false
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-23",
@@ -345,7 +345,7 @@ export const groups: Group[] = [
     ],
     "size": 5,
     "totalWeight": 388,
-    "hasWCHR": false,
+    "hasWCHR": true,
     "hasUMNR": false,
     "hasMuslim": false,
     "hasFemaleMuslim": false

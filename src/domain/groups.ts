@@ -54,6 +54,6 @@ export function isAlone(group: Group): boolean {
   return group.size === 1;
 }
 
-export function sortGroupsBySizeDescending(groups: Group[]): Group[] {
-  return [...groups].sort((a, b) => b.size - a.size);
-}
+// export function sortGroupsBySizeDescending(groups: Group[],passengers:PassengerWithFlags): Group[] {
+//   return [...groups].sort((a, b) => b.size - a.size);
+// }

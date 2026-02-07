@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm src/main.ts"
+    "start": "node --loader ts-node/esm src/index.ts"
   },
   "type": "module",
   "keywords": [],
