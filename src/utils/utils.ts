@@ -12,3 +12,13 @@ export function getLeftSeatNumber(seat: Seat): SeatNumber | null {
 
   return `${seat.row}${leftCode}` as SeatNumber;
 }
+
+export function getRightSeatNumber(seat: Seat): SeatNumber | null {
+  const kiloSeat = seatCode.length - 1;
+  const index = seatCode.indexOf(seat.code);
+  if (index === -1 || index >= kiloSeat) return null;
+
+  const rightCode = seatCode[index + 1];
+
+  return `${seat.row}${rightCode}` as SeatNumber;
+}
