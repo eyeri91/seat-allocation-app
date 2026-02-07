@@ -1,3 +1,27 @@
 // write a function to check if WCHR? if UMNR ? if Muslim and female? that returns true
 
 // export function hasWCHR(members:)
+import type { Passenger } from "../types/passenger.js";
+import type {
+  Special,
+  SPECIAL,
+  SpecialFlags,
+  PassengersWithFlags,
+} from "../types/special.js";
+
+export function addSpecialFlags(
+  passengers: Passenger[],
+): PassengersWithFlags[] {
+  const passengersWithFlags: PassengersWithFlags[] = [];
+
+  for (const p of passengers) {
+    passengersWithFlags.push({
+      ...p,
+      isWCHR: p.special === "WCHR",
+      isUMNR: p.special === "UMNR",
+      isMuslim: p.special === "Muslim",
+      isFemaleMuslim: p.special === "Muslim" && p.gender === "F",
+    });
+  }
+  return passengersWithFlags;
+}
