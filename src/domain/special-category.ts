@@ -9,7 +9,7 @@ import type {
 import { buildPassengersMapById } from "./passenger.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 
-const passengersBydIds = buildPassengersMapById(passengersWithFlags);
+const passengersByIds = buildPassengersMapById(passengersWithFlags);
 
 export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
   const passengersWithFlags: PassengerWithFlags[] = [];
@@ -32,12 +32,12 @@ export function isFemale(passenger: PassengerWithFlags): boolean {
 
 export function getWCHRCount(
   group: Group,
-  passengersBydIds: Map<string, PassengerWithFlags>,
+  passengersByIds: Map<string, PassengerWithFlags>,
 ): { groupId: string; count: number } {
   let count = 0;
 
   for (const id of group.membersIds) {
-    const passenger = passengersBydIds.get(id);
+    const passenger = passengersByIds.get(id);
     if (passenger?.isWCHR) count += 1;
   }
   return { groupId: group.id, count };
