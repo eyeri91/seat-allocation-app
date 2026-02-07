@@ -22,3 +22,5 @@ export function getRightSeatNumber(seat: Seat): SeatNumber | null {
 
   return `${seat.row}${rightCode}` as SeatNumber;
 }
+
+//

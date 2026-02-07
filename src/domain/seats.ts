@@ -3,11 +3,14 @@ import {
   type Seat,
   type SeatMap,
   type SeatNumber,
+  type AssignedPassenger,
   type AssignedPassengerMap,
   AISLE_SEAT_CODES,
   ROW,
   SEATCODE,
 } from "../types/seats.js";
+
+import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 
 export function isAisle(seat: Seat): boolean {
   return AISLE_SEAT_CODES.includes(seat.code as AisleSeatCode);
@@ -41,6 +44,13 @@ export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
   return seatMap;
 }
 
-// export function checkLeftSeat(assignedPassengerMap: AssignedPassengerMap):AssignedPassenger{
-
-// }
+export function getAssignedPassenger(
+  seatNumber: SeatNumber,
+  assignedPassengerMap: AssignedPassengerMap,
+): AssignedPassenger {
+  const assignedPassenger = assignedPassengerMap.get(seatNumber);
+  if (!assignedPassenger) {
+    throw new Error(`No passenger assigned to seat ${seatNumber}`);
+  }
+  return assignedPassenger;
+}
