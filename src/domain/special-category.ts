@@ -23,3 +23,7 @@ export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
   }
   return passengersWithFlags;
 }
+
+export function isFemale(passenger: PassengerWithFlags): boolean {
+  return passenger.gender === "F";
+}
