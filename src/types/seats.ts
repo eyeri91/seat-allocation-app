@@ -44,5 +44,8 @@ export type SeatNumber = `${Row}${SeatCode}`;
 
 export type SeatMap = Map<SeatNumber, string | null>;
 
-export type Assigned = { passenger: PassengerWithFlags; groupId: string };
-export type AssignedMap = Map<SeatNumber, Assigned>;
+export type AssignedPassenger = {
+  passenger: PassengerWithFlags;
+  groupId: string;
+};
+export type AssignedPassengerMap = Map<SeatNumber, AssignedPassenger>;

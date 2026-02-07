@@ -3,6 +3,7 @@ import {
   type Seat,
   type SeatMap,
   type SeatNumber,
+  type AssignedPassengerMap,
   AISLE_SEAT_CODES,
   ROW,
   SEATCODE,
@@ -12,7 +13,12 @@ export function isAisle(seat: Seat): boolean {
   return AISLE_SEAT_CODES.includes(seat.code as AisleSeatCode);
 }
 
-// export function isEmpty(seatNumber:Seat,assigned){}
+export function isEmpty(
+  seatNumber: SeatNumber,
+  assignedPassengerMap: AssignedPassengerMap,
+): boolean {
+  return !assignedPassengerMap.has(seatNumber);
+}
 
 export function generateAllSeatNumbers(): SeatNumber[] {
   const seats: SeatNumber[] = [];
