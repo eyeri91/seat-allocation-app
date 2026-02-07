@@ -1,9 +1,8 @@
 // export function rullWCHR(){
 
-import type { PassengerWithFlags } from "../types/special.js";
+import type { Group } from "../types/groups.js";
+import { passengersById } from "../domain/passenger.js";
 
-// }
-
-export function getAllWCHR(passengers: PassengerWithFlags[]) {
-  return passengers.filter((p) => p.special === "WCHR");
+export function getAllGroupsHasWCHR(groups: Group[]) {
+  return groups.filter((p) => p.hasWCHR);
 }
