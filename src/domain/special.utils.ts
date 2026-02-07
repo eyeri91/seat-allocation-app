@@ -30,7 +30,7 @@ export function isFemale(passenger: PassengerWithFlags): boolean {
   return passenger.gender === "F";
 }
 
-export function getWCHRCount(
+export function getWchrCount(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
 ): { groupId: string; count: number } {
@@ -43,7 +43,7 @@ export function getWCHRCount(
   return { groupId: group.id, count };
 }
 
-export function getWCHRIdsInGroup(
+export function getWchrIdsInGroup(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
 ): string[] {
