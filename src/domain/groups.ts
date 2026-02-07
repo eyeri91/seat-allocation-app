@@ -15,11 +15,11 @@ export function makeGroup(passengers: Passenger[]): Group[] {
     members.add(passenger.id);
     for (const m of passenger.group) members.add(m);
 
-    const membersId = [...members];
+    const membersIds = [...members];
     members.forEach((id) => visited.add(id));
 
     let totalWeight = 0;
-    for (const id of membersId) {
+    for (const id of membersIds) {
       const member = passengerMap.get(id);
       if (member) totalWeight += member.weight;
     }
@@ -27,7 +27,7 @@ export function makeGroup(passengers: Passenger[]): Group[] {
     groups.push({
       id: `grp-${groups.length + 1}`,
       membersIds,
-      size: membersId.length,
+      size: membersIds.length,
       totalWeight,
     });
   }
