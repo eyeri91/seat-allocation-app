@@ -8,9 +8,11 @@ import {
   SEATCODE,
 } from "../types/seats.js";
 
-export function isAisleSeat(seat: Seat): Boolean {
+export function isAisle(seat: Seat): boolean {
   return AISLE_SEAT_CODES.includes(seat.code as AisleSeatCode);
 }
+
+// export function isEmpty(seatNumber:Seat,assigned){}
 
 export function generateAllSeatNumbers(): SeatNumber[] {
   const seats: SeatNumber[] = [];

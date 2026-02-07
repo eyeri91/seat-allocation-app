@@ -1,3 +1,6 @@
+import type { Group } from "./groups.js";
+import type { PassengerWithFlags } from "./special.js";
+
 export type Row = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export const ROW: Row[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -34,9 +37,12 @@ export interface Seat {
   id: SeatNumber;
   row: Row;
   code: SeatCode;
-  isAilse: boolean;
+  isAisle: boolean;
 }
 
 export type SeatNumber = `${Row}${SeatCode}`;
 
 export type SeatMap = Map<SeatNumber, string | null>;
+
+export type Assigned = { passenger: PassengerWithFlags; groupId: string };
+export type AssignedMap = Map<SeatNumber, Assigned>;
