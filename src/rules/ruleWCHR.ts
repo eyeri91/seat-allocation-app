@@ -48,6 +48,12 @@ export function assignWCHRGroups({
         (seatNum) => !assignedPassengerMap.has(seatNum),
       );
       if (!seatNumber) return;
+      tryAssignSeatToPassenger(
+        seatNumber,
+        passenger,
+        group.id,
+        assignedPassengerMap,
+      );
     }
   }
 }
