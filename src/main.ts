@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { makeGroup } from "./domain/groups.js";
+import { makeGroup } from "./domain/groups.utils.js";
 import type { Passenger } from "./types/passenger.js";
-import { addSpecialFlags } from "./domain/special-category.js";
+import { addSpecialFlags } from "./domain/special.utils.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

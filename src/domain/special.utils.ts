@@ -6,7 +6,7 @@ import type {
   SpecialFlags,
   PassengerWithFlags,
 } from "../types/special.js";
-import { buildPassengersMapById } from "./passenger.js";
+import { buildPassengersMapById } from "./passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 
 const passengersByIds = buildPassengersMapById(passengersWithFlags);

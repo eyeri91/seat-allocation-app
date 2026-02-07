@@ -1,7 +1,7 @@
 import type { Group } from "../types/groups.js";
 import { groups } from "../output/groups.js";
-import { getWCHRCount } from "../domain/special-category.js";
-import { buildPassengersMapById } from "../domain/passenger.js";
+import { getWCHRCount } from "../domain/special.utils.js";
+import { buildPassengersMapById } from "../domain/passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 
 const passengersByIds = buildPassengersMapById(passengersWithFlags);

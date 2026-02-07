@@ -16,13 +16,6 @@ export function isAisle(seat: Seat): boolean {
   return AISLE_SEAT_CODES.includes(seat.code as AisleSeatCode);
 }
 
-export function isEmpty(
-  seatNumber: SeatNumber,
-  assignedPassengerMap: AssignedPassengerMap,
-): boolean {
-  return !assignedPassengerMap.has(seatNumber);
-}
-
 export function generateAllSeatNumbers(): SeatNumber[] {
   const seats: SeatNumber[] = [];
   for (const r of ROW) {
@@ -42,15 +35,4 @@ export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
     seatMap.set(seat, null);
   }
   return seatMap;
-}
-
-export function getAssignedPassenger(
-  seatNumber: SeatNumber,
-  assignedPassengerMap: AssignedPassengerMap,
-): AssignedPassenger {
-  const assignedPassenger = assignedPassengerMap.get(seatNumber);
-  if (!assignedPassenger) {
-    throw new Error(`No passenger assigned to seat ${seatNumber}`);
-  }
-  return assignedPassenger;
 }
