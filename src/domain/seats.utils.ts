@@ -29,6 +29,8 @@ export function generateAllSeatNumbers(): SeatNumber[] {
   return seatNumbers;
 }
 
+export const allAisleSeats: SeatNumber[] = generateAllAisleSeatNumbers();
+
 export function createEmptySeatMap(seatNumbers: SeatNumber[]): SeatMap {
   const seatMap: SeatMap = new Map();
   for (const seat of seatNumbers) {
