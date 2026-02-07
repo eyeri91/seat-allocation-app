@@ -9,7 +9,11 @@ export const groups: Group[] = [
       "pax008"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 124,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-2",
@@ -19,7 +23,11 @@ export const groups: Group[] = [
       "pax094"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 299,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-3",
@@ -28,7 +36,11 @@ export const groups: Group[] = [
       "pax050"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 154,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-4",
@@ -38,7 +50,11 @@ export const groups: Group[] = [
       "pax013"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 228,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-5",
@@ -51,7 +67,11 @@ export const groups: Group[] = [
       "pax045"
     ],
     "size": 6,
-    "totalWeight": 0
+    "totalWeight": 515,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-6",
@@ -66,7 +86,11 @@ export const groups: Group[] = [
       "pax095"
     ],
     "size": 8,
-    "totalWeight": 0
+    "totalWeight": 618,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-7",
@@ -76,7 +100,11 @@ export const groups: Group[] = [
       "pax083"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 233,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-8",
@@ -87,7 +115,11 @@ export const groups: Group[] = [
       "pax054"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 314,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-9",
@@ -98,7 +130,11 @@ export const groups: Group[] = [
       "pax011"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 297,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-10",
@@ -108,7 +144,11 @@ export const groups: Group[] = [
       "pax068"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 231,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-11",
@@ -119,7 +159,11 @@ export const groups: Group[] = [
       "pax100"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 362,
+    "hasWCHR": true,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-12",
@@ -130,7 +174,11 @@ export const groups: Group[] = [
       "pax069"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 292,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-13",
@@ -140,7 +188,11 @@ export const groups: Group[] = [
       "pax081"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 239,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-14",
@@ -152,7 +204,11 @@ export const groups: Group[] = [
       "pax098"
     ],
     "size": 5,
-    "totalWeight": 0
+    "totalWeight": 340,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-15",
@@ -164,7 +220,11 @@ export const groups: Group[] = [
       "pax066"
     ],
     "size": 5,
-    "totalWeight": 0
+    "totalWeight": 357,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-16",
@@ -174,7 +234,11 @@ export const groups: Group[] = [
       "pax043"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 201,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-17",
@@ -185,7 +249,11 @@ export const groups: Group[] = [
       "pax024"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 296,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-18",
@@ -194,7 +262,11 @@ export const groups: Group[] = [
       "pax078"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 167,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-19",
@@ -202,7 +274,11 @@ export const groups: Group[] = [
       "pax027"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 60,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-20",
@@ -213,7 +289,11 @@ export const groups: Group[] = [
       "pax074"
     ],
     "size": 4,
-    "totalWeight": 0
+    "totalWeight": 240,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-21",
@@ -222,7 +302,11 @@ export const groups: Group[] = [
       "pax065"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 137,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-22",
@@ -231,7 +315,11 @@ export const groups: Group[] = [
       "pax046"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 130,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-23",
@@ -240,7 +328,11 @@ export const groups: Group[] = [
       "pax059"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 206,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": true,
+    "hasFemaleMuslim": true
   },
   {
     "id": "grp-24",
@@ -252,7 +344,11 @@ export const groups: Group[] = [
       "pax063"
     ],
     "size": 5,
-    "totalWeight": 0
+    "totalWeight": 388,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-25",
@@ -261,7 +357,11 @@ export const groups: Group[] = [
       "pax070"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 209,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-26",
@@ -270,7 +370,11 @@ export const groups: Group[] = [
       "pax080"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 130,
+    "hasWCHR": true,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-27",
@@ -278,7 +382,11 @@ export const groups: Group[] = [
       "pax044"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 50,
+    "hasWCHR": false,
+    "hasUMNR": true,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-28",
@@ -286,7 +394,11 @@ export const groups: Group[] = [
       "pax047"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 58,
+    "hasWCHR": false,
+    "hasUMNR": true,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-29",
@@ -296,7 +408,11 @@ export const groups: Group[] = [
       "pax052"
     ],
     "size": 3,
-    "totalWeight": 0
+    "totalWeight": 263,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-30",
@@ -304,7 +420,11 @@ export const groups: Group[] = [
       "pax051"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 95,
+    "hasWCHR": false,
+    "hasUMNR": true,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-31",
@@ -312,7 +432,11 @@ export const groups: Group[] = [
       "pax053"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 91,
+    "hasWCHR": true,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-32",
@@ -320,7 +444,11 @@ export const groups: Group[] = [
       "pax067"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 56,
+    "hasWCHR": false,
+    "hasUMNR": true,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-33",
@@ -328,7 +456,11 @@ export const groups: Group[] = [
       "pax073"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 73,
+    "hasWCHR": false,
+    "hasUMNR": true,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-34",
@@ -337,7 +469,11 @@ export const groups: Group[] = [
       "pax088"
     ],
     "size": 2,
-    "totalWeight": 0
+    "totalWeight": 125,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   },
   {
     "id": "grp-35",
@@ -345,6 +481,10 @@ export const groups: Group[] = [
       "pax086"
     ],
     "size": 1,
-    "totalWeight": 0
+    "totalWeight": 84,
+    "hasWCHR": false,
+    "hasUMNR": false,
+    "hasMuslim": false,
+    "hasFemaleMuslim": false
   }
 ];

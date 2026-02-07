@@ -1,11 +1,11 @@
-import type { Passenger } from "../types/passenger.js";
+import type { PassengerWithFlags } from "../types/special.js";
 import type { Group } from "../types/groups.js";
 
-export function makeGroup(passengers: Passenger[]): Group[] {
+export function makeGroup(passengers: PassengerWithFlags[]): Group[] {
   const groups: Group[] = [];
   const visited = new Set<string>();
 
-  const passengerMap = new Map<string, Passenger>();
+  const passengerMap = new Map<string, PassengerWithFlags>();
   for (const p of passengers) passengerMap.set(p.id, p);
 
   for (const passenger of passengers) {
@@ -24,27 +24,26 @@ export function makeGroup(passengers: Passenger[]): Group[] {
     let hasMuslim = false;
     let hasFemaleMuslim = false;
 
-    // for (const id of groupMembersIds) {
-    //   const member = passengerMap.get(id);
-    //   if (member) totalWeight += member.weight;
-    //   if (member.)
-    // }
-
-    //     for (const m of membersIds) {
-    //     passengersWithFlags.push({
-    //       ...p,
-    //       isWCHR: p.special === "WCHR",
-    //       isUMNR: p.special === "UMNR",
-    //       isMuslim: p.special === "Muslim",
-    //       isFemaleMuslim: p.special === "Muslim" && p.gender === "F",
-    //     });
-    //   }
+    for (const id of groupMembersIds) {
+      const member = passengerMap.get(id);
+      if (member) {
+        totalWeight += member.weight ?? false;
+        hasWCHR ||= member.isWCHR ?? false;
+        hasUMNR ||= member.isUMNR ?? false;
+        hasMuslim ||= member.isMuslim ?? false;
+        hasFemaleMuslim ||= member.isFemaleMuslim ?? false;
+      }
+    }
 
     groups.push({
       id: `grp-${groups.length + 1}`,
       membersIds: groupMembersIds,
       size: groupMembersIds.length,
       totalWeight,
+      hasWCHR,
+      hasUMNR,
+      hasMuslim,
+      hasFemaleMuslim,
     });
   }
 

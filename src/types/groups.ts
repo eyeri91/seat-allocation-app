@@ -3,8 +3,8 @@ export interface Group {
   membersIds: string[];
   size: number;
   totalWeight: number;
-  //   hasWCHR: boolean;
-  //   hasUMNR: boolean;
-  //   hasMuslim: boolean;
-  //   hasFemaleMuslim: boolean;
+  hasWCHR: boolean;
+  hasUMNR: boolean;
+  hasMuslim: boolean;
+  hasFemaleMuslim: boolean;
 }

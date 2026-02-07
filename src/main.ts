@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { makeGroup } from "./domain/groups.ts";
-import type { Passenger } from "./types/passenger.ts";
-import { addSpecialFlags } from "./domain/special-category.ts";
+import { makeGroup } from "./domain/groups.js";
+import type { Passenger } from "./types/passenger.js";
+import { addSpecialFlags } from "./domain/special-category.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,13 +23,13 @@ const passengersWithFlags = addSpecialFlags(passengers);
 const groups = makeGroup(passengersWithFlags);
 
 const sortedGroupData = `
-import type { Group } from "../types/groups.ts";
+import type { Group } from "../types/groups.js";
 
 export const groups: Group[] = ${JSON.stringify(groups, null, 2)};
 `;
 
 const passengersWithFlagsData = `
-import type { PassengerWithFlags } from "../types/special.ts";
+import type { PassengerWithFlags } from "../types/special.js";
 
 export const passengersWithFlags: PassengerWithFlags[] = ${JSON.stringify(passengersWithFlags, null, 2)};
 `;
