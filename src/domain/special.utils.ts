@@ -42,3 +42,15 @@ export function getWCHRCount(
   }
   return { groupId: group.id, count };
 }
+
+export function getWCHRIdsInGroup(
+  group: Group,
+  passengersByIds: Map<string, PassengerWithFlags>,
+): string[] {
+  let ids: string[] = [];
+  for (const id of group.membersIds) {
+    const passenger = passengersByIds.get(id);
+    if (passenger?.isWCHR) ids.push(id);
+  }
+  return ids;
+}

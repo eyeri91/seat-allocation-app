@@ -4,9 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { groupsWithWCHR, sortedGroupByWCHRNumbers } from "./rules/ruleWCHR.js";
-// import { buildPassengersMapById } from "./domain/passenger.js";
+import { buildPassengersMapById } from "./domain/passenger.utils.js";
 import type { Passenger } from "./types/passenger.js";
-// import { passengersWithFlags } from "./output/passengersWithFlags.js";
+import { createAssignedPassengerMap } from "./domain/seatmap.utils.js";
+import { passengersWithFlags } from "./output/passengersWithFlags.js";
 // import { error } from "node:console";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,8 +17,12 @@ const dataPath = path.join(__dirname, "../data/dataset.json");
 const raw = fs.readFileSync(dataPath, "utf-8");
 const passengers = JSON.parse(raw) as Passenger[];
 
-console.log(sortedGroupByWCHRNumbers);
-// const passengersByIds = buildPassengersMapById(passengersWithFlags);
+const passengersByIds = buildPassengersMapById(passengersWithFlags);
+
+const assignedPassengerMap = createAssignedPassengerMap();
+for (const group of sortedGroupByWCHRNumbers) {
+}
+
 // const firstGroup = sortedGroupByWCHRNumbers[0];
 // if (!firstGroup) {
 //   throw error;
