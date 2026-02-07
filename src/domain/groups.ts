@@ -11,23 +11,39 @@ export function makeGroup(passengers: Passenger[]): Group[] {
   for (const passenger of passengers) {
     if (visited.has(passenger.id)) continue;
 
-    const members = new Set<string>();
-    members.add(passenger.id);
-    for (const m of passenger.group) members.add(m);
+    const groupMembers = new Set<string>();
+    groupMembers.add(passenger.id);
+    for (const m of passenger.group) groupMembers.add(m);
 
-    const membersIds = [...members];
-    members.forEach((id) => visited.add(id));
+    const groupMembersIds = [...groupMembers];
+    groupMembers.forEach((id) => visited.add(id));
 
     let totalWeight = 0;
-    for (const id of membersIds) {
-      const member = passengerMap.get(id);
-      if (member) totalWeight += member.weight;
-    }
+    let hasWCHR = false;
+    let hasUMNR = false;
+    let hasMuslim = false;
+    let hasFemaleMuslim = false;
+
+    // for (const id of groupMembersIds) {
+    //   const member = passengerMap.get(id);
+    //   if (member) totalWeight += member.weight;
+    //   if (member.)
+    // }
+
+    //     for (const m of membersIds) {
+    //     passengersWithFlags.push({
+    //       ...p,
+    //       isWCHR: p.special === "WCHR",
+    //       isUMNR: p.special === "UMNR",
+    //       isMuslim: p.special === "Muslim",
+    //       isFemaleMuslim: p.special === "Muslim" && p.gender === "F",
+    //     });
+    //   }
 
     groups.push({
       id: `grp-${groups.length + 1}`,
-      membersIds,
-      size: membersIds.length,
+      membersIds: groupMembersIds,
+      size: groupMembersIds.length,
       totalWeight,
     });
   }

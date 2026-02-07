@@ -5,5 +5,6 @@ export interface Group {
   totalWeight: number;
   //   hasWCHR: boolean;
   //   hasUMNR: boolean;
+  //   hasMuslim: boolean;
   //   hasFemaleMuslim: boolean;
 }
