@@ -1,14 +1,14 @@
-import type { Passenger } from "./passenger.js"
+import type { Passenger } from "./passenger.js";
 
-export type Special = ""|"WCHR"|"UMNR"|"Muslim"
+export type Special = "" | "WCHR" | "UMNR" | "Muslim";
 
+export const SPECIAL = ["WCHR", "UMNR", "Muslim"] as Special[];
 
 export interface SpecialFlags {
-    isWCHR: boolean,
-    isUMNR: boolean,
-    isMuslim: boolean, 
-    isFemaleMuslim: boolean 
+  isWCHR: boolean;
+  isUMNR: boolean;
+  isMuslim: boolean;
+  isFemaleMuslim: boolean;
 }
 
-export type SpecialPassenger = Passenger & SpecialFlags
-
+export type SpecialPassenger = Passenger & SpecialFlags;
