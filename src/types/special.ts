@@ -1,4 +1,7 @@
 import type { Passenger } from "./passenger.js";
+import type { Group } from "./groups.js";
+import type { SeatNumber } from "./seats.js";
+import type { AssignedPassengerMap } from "./seats.js";
 
 export type Special = "" | "WCHR" | "UMNR" | "Muslim";
 
@@ -12,3 +15,26 @@ export interface SpecialFlags {
 }
 
 export type PassengerWithFlags = Passenger & SpecialFlags;
+
+type PassengerFlagKey = Extract<keyof PassengerWithFlags, `is${string}`>;
+type GroupSpecialKey = Extract<keyof Group, `has${string}`>;
+
+export type AssignSpecialData<
+  GroupKey extends GroupSpecialKey = GroupSpecialKey,
+  PassengerKey extends PassengerFlagKey = PassengerFlagKey,
+> = {
+  groups: Group[];
+  passengersByIds: Map<string, PassengerWithFlags>;
+  aisleSeatNumbers: SeatNumber[];
+  assignedPassengerMap: AssignedPassengerMap;
+
+  // ✅ 어떤 special을 처리하는지
+  groupKey: GroupKey;
+  flagKey: PassengerKey;
+};
+
+export type SpecialGroupAnchor = {
+  groupId: string;
+  anchorSeatNumbers: SeatNumber[];
+  unassignedMembersId: string[];
+};

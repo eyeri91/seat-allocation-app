@@ -1,6 +1,8 @@
 import type { Group } from "../types/groups.js";
 import type { PassengerWithFlags } from "../types/special.js";
 import type { AssignedPassengerMap, SeatNumber } from "../types/seats.js";
+import type { AssignSpecialData } from "../types/special.js";
+import type { SpecialGroupAnchor } from "../types/special.js";
 
 import { getAllSpecialGroups } from "../domain/special.utils.js";
 import { getNonSpecialMembersIds } from "../domain/special.utils.js";
@@ -12,26 +14,13 @@ import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 import { getAssignedPassenger } from "../domain/seatmap.utils.js";
 import { generateAllSeatNumbers } from "../domain/seats.utils.js";
 
-type AssignWchrData = {
-  groups: Group[];
-  passengersByIds: Map<string, PassengerWithFlags>;
-  aisleSeatNumbers: SeatNumber[];
-  assignedPassengerMap: AssignedPassengerMap;
-};
-
-export type WchrGroupAnchor = {
-  groupId: string;
-  anchorSeatNumbers: SeatNumber[];
-  unassignedMembersId: string[];
-};
-
 export function assignWchrGroups({
   groups,
   passengersByIds,
   aisleSeatNumbers,
   assignedPassengerMap,
-}: AssignWchrData): WchrGroupAnchor[] {
-  const results: WchrGroupAnchor[] = [];
+}: AssignSpecialData<"hasWCHR", "isWCHR">): SpecialGroupAnchor[] {
+  const results: SpecialGroupAnchor[] = [];
   const wchrGroups = getAllSpecialGroups(groups, "hasWCHR");
 
   const sortedWchrGroupsNumbers = sortGroupsByNumbers(
@@ -79,7 +68,7 @@ export function assignWchrGroups({
   return results;
 }
 
-export type AssignRestData = WchrGroupAnchor & {
+export type AssignRestData = SpecialGroupAnchor & {
   passengersByIds: Map<string, PassengerWithFlags>;
   assignedPassengerMap: AssignedPassengerMap;
 };
@@ -98,7 +87,6 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
 
   const emptySeatsToAssignRest: SeatNumber[] = [];
   let anchorSeats: SeatNumber[] = [...anchorSeatNumbers];
-  // const assignedAnchors = new Set<SeatNumber>();
 
   const fillEmptySeatsFromAnchors = (
     anchors: SeatNumber[],

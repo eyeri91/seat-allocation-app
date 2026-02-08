@@ -15,6 +15,8 @@ export function run() {
     passengersByIds,
     aisleSeatNumbers,
     assignedPassengerMap,
+    groupKey: "hasWCHR",
+    flagKey: "isWCHR",
   });
 
   for (const anchorData of wchrAnchors) {

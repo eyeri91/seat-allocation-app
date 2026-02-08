@@ -44,24 +44,24 @@ type PassengerSpecialKey = Extract<keyof PassengerWithFlags, `is${string}`>;
 export function getSpecialCount<Special extends PassengerSpecialKey>(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
-  specialKey: Special,
+  specialFlag: Special,
 ): { groupId: string; count: number } {
   let count = 0;
 
   for (const id of group.membersIds) {
     const passenger = passengersByIds.get(id);
-    if (passenger?.[specialKey]) count += 1;
+    if (passenger?.[specialFlag]) count += 1;
   }
   return { groupId: group.id, count };
 }
 export function sortGroupsByNumbers<Special extends PassengerSpecialKey>(
   groups: Group[],
   passengersByIds: Map<string, PassengerWithFlags>,
-  Special: Special,
+  specialFlag: Special,
 ): Group[] {
   return [...groups].sort((a, b) => {
-    const aCount = getSpecialCount(a, passengersByIds, Special).count;
-    const bCount = getSpecialCount(b, passengersByIds, Special).count;
+    const aCount = getSpecialCount(a, passengersByIds, specialFlag).count;
+    const bCount = getSpecialCount(b, passengersByIds, specialFlag).count;
 
     if (aCount !== bCount) return bCount - aCount;
     return b.size - a.size;
@@ -71,12 +71,12 @@ export function sortGroupsByNumbers<Special extends PassengerSpecialKey>(
 export function getSpecialIdsInGroup<Special extends PassengerSpecialKey>(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
-  specialKey: Special,
+  specialFlag: Special,
 ): string[] {
   const ids: string[] = [];
   for (const id of group.membersIds) {
     const passenger = passengersByIds.get(id);
-    if (passenger?.[specialKey]) ids.push(id);
+    if (passenger?.[specialFlag]) ids.push(id);
   }
   return ids;
 }
@@ -84,9 +84,9 @@ export function getSpecialIdsInGroup<Special extends PassengerSpecialKey>(
 export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
-  specialKey: Special,
+  specialFlag: Special,
 ): string[] {
   return group.membersIds.filter(
-    (id) => !passengersByIds.get(id)?.[specialKey],
+    (id) => !passengersByIds.get(id)?.[specialFlag],
   );
 }
