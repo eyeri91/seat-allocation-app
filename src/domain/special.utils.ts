@@ -1,13 +1,9 @@
 import type { Passenger } from "../types/passenger.js";
 import type { Group } from "../types/groups.js";
-import type {
-  Special,
-  SPECIAL,
-  SpecialFlags,
-  PassengerWithFlags,
-} from "../types/special.js";
+import type { PassengerWithFlags } from "../types/special.js";
 import { buildPassengersMapById } from "./passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
+import type { GroupSpecialKey } from "../types/special.js";
 
 const passengersByIds = buildPassengersMapById(passengersWithFlags);
 
@@ -29,8 +25,6 @@ export function addSpecialFlags(passengers: Passenger[]): PassengerWithFlags[] {
 export function isFemale(passenger: PassengerWithFlags): boolean {
   return passenger.gender === "F";
 }
-
-type GroupSpecialKey = Extract<keyof Group, `has${string}`>;
 
 export function getAllSpecialGroups<Special extends GroupSpecialKey>(
   groups: Group[],

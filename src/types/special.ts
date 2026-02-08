@@ -16,8 +16,8 @@ export interface SpecialFlags {
 
 export type PassengerWithFlags = Passenger & SpecialFlags;
 
-type PassengerFlagKey = Extract<keyof PassengerWithFlags, `is${string}`>;
-type GroupSpecialKey = Extract<keyof Group, `has${string}`>;
+export type PassengerFlagKey = Extract<keyof PassengerWithFlags, `is${string}`>;
+export type GroupSpecialKey = Extract<keyof Group, `has${string}`>;
 
 export type AssignSpecialData<
   GroupKey extends GroupSpecialKey = GroupSpecialKey,

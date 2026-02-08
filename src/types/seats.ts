@@ -42,3 +42,10 @@ export type AssignedPassenger = {
   groupId: string;
 };
 export type AssignedPassengerMap = Map<SeatNumber, AssignedPassenger>;
+
+export type NeighboringSeatInfo = {
+  leftSeat: SeatNumber | null;
+  rightSeat: SeatNumber | null;
+  leftPassenger: PassengerWithFlags | null;
+  rightPassenger: PassengerWithFlags | null;
+};
