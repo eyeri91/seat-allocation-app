@@ -2,7 +2,7 @@ import type {
   AssignSpecialData,
   SpecialGroupAnchor,
 } from "../types/special.js";
-import type { SeatNumber } from "../types/seats.js";
+import type { SeatNumber, AssignedPassengerMap } from "../types/seats.js";
 import { isFemale } from "../domain/special.utils.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { getSpecialIdsInGroup } from "../domain/special.utils.js";
@@ -39,7 +39,7 @@ export function assignUmnrGroups({
       if (!umnr) continue;
 
       const seatNumber = availableSeatNumbers.find(
-        (seatNum) => !assignedPassengerMap.has(seatNum),
+        (seat) => !assignedPassengerMap.has(seat),
       );
       if (!seatNumber) break;
 
@@ -66,4 +66,16 @@ export function assignUmnrGroups({
   }
   console.log(`"total mems of UMNR : ${totalMems}`);
   return results;
+}
+
+export function getUmnrSeatNumbers(
+  assignedPassengerMap: AssignedPassengerMap,
+): SeatNumber[] {
+  const result: SeatNumber[] = [];
+
+  for (const [seat, assigned] of assignedPassengerMap.entries()) {
+    if (assigned.passenger.isUMNR) result.push(seat);
+  }
+
+  return result;
 }

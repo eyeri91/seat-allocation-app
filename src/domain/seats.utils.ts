@@ -6,7 +6,7 @@ import {
   type NeighboringSeatInfo,
   AISLE_SEAT_CODES,
   ROW,
-  Row
+  type Row,
   SEATCODE,
 } from "../types/seats.js";
 import {
@@ -100,11 +100,11 @@ export function getEligibleSeatsForSpecial(
   return eligibleSeats;
 }
 
-export function generateABJKSeats(rows: Row): SeatNumber[] {
+export function generateABJKSeats(rows: readonly Row[]): SeatNumber[] {
   const seatNumbers: SeatNumber[] = [];
   const code = ["A", "B", "J", "K"] as const;
 
-  for (let row = 1; row <= rows; row++) {
+  for (const row of rows) {
     for (const c of code) {
       seatNumbers.push(`${row}${c}` as SeatNumber);
     }

@@ -6,61 +6,70 @@ import {
   generateAllSeatNumbers,
   getAllEmptySeatNumbers,
   getEligibleSeatsForSpecial,
+  generateABJKSeats,
 } from "../domain/seats.utils.js";
 import { groups } from "../output/groups.js";
 import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
 import { assignUmnrGroups } from "../rules/ruleUMNR.js";
+import { ROW } from "../types/seats.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
   const assignedPassengerMap = createAssignedPassengerMap();
   const allSeatNumbers = generateAllSeatNumbers();
+  const allABJKSeats = generateABJKSeats(ROW);
   const leftEmptySeatNumbers = getAllEmptySeatNumbers(
     allSeatNumbers,
     assignedPassengerMap,
   );
   const aisleSeatNumbers = generateAllAisleSeatNumbers();
-
-  const wchrAnchors = assignWchrGroups({
-    groups,
-    passengersByIds,
-    availableSeatNumbers: aisleSeatNumbers,
-    assignedPassengerMap,
-    groupKey: "hasWCHR",
-    flagKey: "isWCHR",
-  });
-
-  const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
-    allSeatNumbers,
-    assignedPassengerMap,
-  );
-
-  const eligibleSeats = getEligibleSeatsForSpecial(
-    emptySeatNumbersAfterWchr,
-    assignedPassengerMap,
-    (seat, neighbor) => {
-      const leftOk =
-        neighbor.leftPassenger &&
-        (neighbor.leftPassenger.gender === "F" ||
-          neighbor.leftPassenger.isUMNR);
-
-      const rightOk =
-        neighbor.rightPassenger &&
-        (neighbor.rightPassenger.gender === "F" ||
-          neighbor.rightPassenger.isUMNR);
-
-      return Boolean(leftOk || rightOk);
-    },
-  );
-
   const umnrAnchors = assignUmnrGroups({
     groups,
     passengersByIds,
-    availableSeatNumbers: emptySeatNumbersAfterWchr,
+    availableSeatNumbers: allABJKSeats,
     assignedPassengerMap,
     groupKey: "hasUMNR",
     flagKey: "isUMNR",
   });
 
-  return assignedPassengerMap;
+  const emptySeatNumbersAfterUmnr = getAllEmptySeatNumbers(
+    allSeatNumbers,
+    assignedPassengerMap,
+  );
+
+  //   const wchrAnchors = assignWchrGroups({
+  //     groups,
+  //     passengersByIds,
+  //     availableSeatNumbers: aisleSeatNumbers,
+  //     assignedPassengerMap,
+  //     groupKey: "hasWCHR",
+  //     flagKey: "isWCHR",
+  //   });
+
+  //   const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
+  //     allSeatNumbers,
+  //     assignedPassengerMap,
+  //   );
+
+  //   const eligibleSeats = getEligibleSeatsForSpecial(
+  //     emptySeatNumbersAfterWchr,
+  //     assignedPassengerMap,
+  //     (seat, neighbor) => {
+  //       const leftOk =
+  //         neighbor.leftPassenger &&
+  //         (neighbor.leftPassenger.gender === "F" ||
+  //           neighbor.leftPassenger.isUMNR);
+
+  //       const rightOk =
+  //         neighbor.rightPassenger &&
+  //         (neighbor.rightPassenger.gender === "F" ||
+  //           neighbor.rightPassenger.isUMNR);
+
+  //       return Boolean(leftOk || rightOk);
+  //     },
+  //   );
+
+  //   console.log(emptySeatNumbersAfterUmnr.length);
+
+  return "end";
 }
