@@ -171,7 +171,7 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
       );
 
       if (successful) {
-        unassignedMembersId.splice(i, 1); // ✅ 성공하면 제거
+        unassignedMembersId.splice(i, 1);
       } else {
         i++;
       }

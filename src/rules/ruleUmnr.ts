@@ -10,6 +10,8 @@ import type {
   SpecialGroupAnchor,
 } from "../types/special.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
+import { getSpecialIdsInGroup } from "../domain/special.utils.js";
+import { getNonSpecialMembersIds } from "../domain/special.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 import { getAssignedPassenger } from "../domain/seatmap.utils.js";
@@ -32,6 +34,41 @@ export function assignUmnrGroups({
     passengersByIds,
     "isUMNR",
   );
-  console.log(umnrGroups);
+  for (const group of sortedUmnrGroupsNumbers) {
+    const umnrIds = getSpecialIdsInGroup(group, passengersByIds, "isUMNR");
+    if (umnrIds.length === 0) continue;
+
+    const anchorSeatNumbers: SeatNumber[] = [];
+
+    for (const umnrId of umnrIds) {
+      const passenger = passengersByIds.get(umnrId);
+      if (!passenger) continue;
+
+      const seatNumber = aisleSeatNumbers.find(
+        (seatNum) => !assignedPassengerMap.has(seatNum),
+      );
+      if (!seatNumber) break;
+
+      const successful = tryAssignSeatToPassenger(
+        seatNumber,
+        passenger,
+        group.id,
+        assignedPassengerMap,
+      );
+      if (successful) anchorSeatNumbers.push(seatNumber);
+
+      const unassignedMembersId = getNonSpecialMembersIds(
+        group,
+        passengersByIds,
+        "isUMNR",
+      );
+
+      results.push({
+        groupId: group.id,
+        anchorSeatNumbers,
+        unassignedMembersId,
+      });
+    }
+  }
   return results;
 }

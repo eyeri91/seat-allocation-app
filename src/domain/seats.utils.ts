@@ -1,5 +1,6 @@
 import {
   type AisleSeatCode,
+  type AssignedPassengerMap,
   type SeatMap,
   type SeatNumber,
   AISLE_SEAT_CODES,
@@ -50,5 +51,16 @@ export function generateAllAisleSeatNumbers(): SeatNumber[] {
     }
   }
 
+  return results;
+}
+
+export function getAllEmptySeatNumbers(
+  seatNumbers: SeatNumber[],
+  assignedPassengerMap: AssignedPassengerMap,
+): SeatNumber[] {
+  const results: SeatNumber[] = [];
+  for (const s of seatNumbers) {
+    if (!assignedPassengerMap.has(s)) results.push(s);
+  }
   return results;
 }
