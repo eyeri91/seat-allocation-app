@@ -5,6 +5,7 @@ import {
   generateAllAisleSeatNumbers,
   generateAllSeatNumbers,
   getAllEmptySeatNumbers,
+  getEligibleSeatsForSpecial,
 } from "../domain/seats.utils.js";
 import { groups } from "../output/groups.js";
 import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
@@ -37,13 +38,37 @@ export function run() {
     });
   }
 
+  const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
+    allSeatNumbers,
+    assignedPassengerMap,
+  );
+
+  const eligibleSeats = getEligibleSeatsForSpecial(
+    emptySeatNumbersAfterWchr,
+    assignedPassengerMap,
+    (seat, neighbor) => {
+      const leftOk =
+        neighbor.leftPassenger &&
+        (neighbor.leftPassenger.gender === "F" ||
+          neighbor.leftPassenger.isUMNR);
+
+      const rightOk =
+        neighbor.rightPassenger &&
+        (neighbor.rightPassenger.gender === "F" ||
+          neighbor.rightPassenger.isUMNR);
+
+      return Boolean(leftOk || rightOk);
+    },
+  );
+
   const umnrAnchors = assignUmnrGroups({
     groups,
     passengersByIds,
-    availableSeatNumbers: leftEmptySeatNumbers,
+    availableSeatNumbers: emptySeatNumbersAfterWchr,
     assignedPassengerMap,
     groupKey: "hasUMNR",
     flagKey: "isUMNR",
   });
-  return "assignedPassengerMap;";
+
+  return assignedPassengerMap;
 }
