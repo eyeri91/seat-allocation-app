@@ -33,13 +33,6 @@ export type AisleSeatCode = "C" | "D" | "G" | "H";
 
 export const AISLE_SEAT_CODES: AisleSeatCode[] = ["C", "D", "G", "H"] as const;
 
-export interface Seat {
-  id: SeatNumber;
-  row: Row;
-  code: SeatCode;
-  isAisle: boolean;
-}
-
 export type SeatNumber = `${Row}${SeatCode}`;
 
 export type SeatMap = Map<SeatNumber, string | null>;

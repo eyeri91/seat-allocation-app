@@ -6,8 +6,9 @@ import { getWchrCount } from "../domain/special.utils.js";
 import { getWchrIdsInGroup } from "../domain/special.utils.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
+import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 
-type AssignWchrContext = {
+type AssignWchrData = {
   groups: Group[];
   passengersByIds: Map<string, PassengerWithFlags>;
   aisleSeatNumbers: SeatNumber[];
@@ -49,7 +50,7 @@ export function assignWchrGroups({
   passengersByIds,
   aisleSeatNumbers,
   assignedPassengerMap,
-}: AssignWchrContext): WchrGroupAnchor[] {
+}: AssignWchrData): WchrGroupAnchor[] {
   const results: WchrGroupAnchor[] = [];
   const wchrGroups = getAllWchrGroups(groups);
 
@@ -92,3 +93,37 @@ export function assignWchrGroups({
   }
   return results;
 }
+
+export type AssignRestData = WchrGroupAnchor & {
+  passengersByIds: Map<string, PassengerWithFlags>;
+  assignedPassengerMap: AssignedPassengerMap;
+};
+
+export function assignRestNextToAnchor(inputs: AssignRestData) {
+  const {
+    groupId,
+    unassignedMembersId,
+    anchorSeatNumbers,
+    passengersByIds,
+    assignedPassengerMap,
+  } = inputs;
+
+  const neededSeats = unassignedMembersId.length;
+  if (neededSeats === 0) return true;
+
+  const emptySeatsToAssignRest: SeatNumber[] = [];
+
+  le;
+}
+
+// export function findEmptyNeighborBlock(
+//   wchrGroupAnchor: WchrGroupAnchor,
+//   passengersByIds: Map<string, PassengerWithFlags>,
+//   assignedPassengerMap: Map<
+//     SeatNumber,
+//     {
+//       passenger: PassengerWithFlags;
+//       groupId: string;
+//     }
+//   >,
+// ) {}

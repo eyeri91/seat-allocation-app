@@ -3,8 +3,6 @@ import {
   type Seat,
   type SeatMap,
   type SeatNumber,
-  type AssignedPassenger,
-  type AssignedPassengerMap,
   AISLE_SEAT_CODES,
   ROW,
   SEATCODE,
