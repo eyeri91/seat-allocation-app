@@ -23,6 +23,10 @@ export function run() {
     assignedPassengerMap,
   );
   const aisleSeatNumbers = generateAllAisleSeatNumbers();
+  const unassignedFemales = passengersWithFlags.filter(
+    (p) => p.gender === "F" && !p.isUMNR,
+  );
+
   const umnrAnchors = assignUmnrGroups({
     groups,
     passengersByIds,
