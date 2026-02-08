@@ -23,7 +23,7 @@ export function run() {
   const wchrAnchors = assignWchrGroups({
     groups,
     passengersByIds,
-    availableSeatNumbers,
+    availableSeatNumbers: aisleSeatNumbers,
     assignedPassengerMap,
     groupKey: "hasWCHR",
     flagKey: "isWCHR",
@@ -40,7 +40,7 @@ export function run() {
   const umnrAnchors = assignUmnrGroups({
     groups,
     passengersByIds,
-    availableSeatNumbers,
+    availableSeatNumbers: leftEmptySeatNumbers,
     assignedPassengerMap,
     groupKey: "hasUMNR",
     flagKey: "isUMNR",
