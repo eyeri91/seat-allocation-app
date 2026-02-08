@@ -1,6 +1,5 @@
 import {
   type AisleSeatCode,
-  type Seat,
   type SeatMap,
   type SeatNumber,
   AISLE_SEAT_CODES,
@@ -8,10 +7,15 @@ import {
   SEATCODE,
 } from "../types/seats.js";
 
-import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
+import {
+  getLeftSeatNumber,
+  getRightSeatNumber,
+  parseSeatNumber,
+} from "../utils/utils.js";
 
-export function isAisle(seat: Seat): boolean {
-  return AISLE_SEAT_CODES.includes(seat.code as AisleSeatCode);
+export function isAisle(seatNumber: SeatNumber): boolean {
+  const { row, code } = parseSeatNumber(seatNumber);
+  return AISLE_SEAT_CODES.includes(code as AisleSeatCode);
 }
 
 export function generateAllSeatNumbers(): SeatNumber[] {

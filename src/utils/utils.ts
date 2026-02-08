@@ -4,7 +4,7 @@ import type { Row, SeatCode, SeatNumber } from "../types/seats.js";
 
 const seatCode = SEATCODE;
 
-function parseSeatNumber(seatNumber: SeatNumber) {
+export function parseSeatNumber(seatNumber: SeatNumber) {
   const code = seatNumber.slice(-1) as SeatCode;
   const rowStr = seatNumber.slice(0, -1);
   const row = Number(rowStr);
