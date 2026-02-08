@@ -7,3 +7,10 @@ export function buildPassengersMapById(
     passengers.map((passenger) => [passenger.id, passenger] as const),
   );
 }
+
+
+export function buildUnassignedFemales(
+  passengers: PassengerWithFlags[],
+): PassengerWithFlags[] {
+  return passengers.filter((p) => p.gender === "F" && !p.isUMNR);
+}
