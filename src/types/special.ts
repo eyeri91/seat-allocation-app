@@ -36,3 +36,10 @@ export type SpecialGroupAnchor = {
   anchorSeatNumbers: SeatNumber[];
   unassignedMembersId: string[];
 };
+
+
+export type AssignFemalesNextToInput = {
+  assignedPassengerMap: AssignedPassengerMap;
+  unassignedFemales: PassengerWithFlags[]; // ✅ 성공하면 여기서 제거됨
+  isTarget: (p: PassengerWithFlags) => boolean; // ✅ 예: (p)=>p.isUMNR or (p)=>p.isFemaleMuslim
+
