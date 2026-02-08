@@ -112,8 +112,44 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
   if (neededSeats === 0) return true;
 
   const emptySeatsToAssignRest: SeatNumber[] = [];
+  let anchorSeats: SeatNumber[] = [...anchorSeatNumbers];
+  const assignedAnchors = new Set<SeatNumber>();
 
-  le;
+  for (const s of anchorSeats) {
+    let currentSeat = s;
+    while (emptySeatsToAssignRest.length < neededSeats) {
+      const leftSeat = getLeftSeatNumber(currentSeat);
+      if (!leftSeat) break;
+      if (assignedPassengerMap.has(leftSeat)) break;
+
+      emptySeatsToAssignRest.push(leftSeat);
+      assignedAnchors.add(s);
+      const nextSeat = getLeftSeatNumber(leftSeat);
+      if (!nextSeat) break;
+      currentSeat = nextSeat;
+    }
+    if (emptySeatsToAssignRest.length >= neededSeats) break;
+  }
+  anchorSeats = anchorSeats.filter((seat) => !assignedAnchors.has(seat));
+
+  if (anchorSeats) {
+    for (const s of anchorSeats) {
+      let currentSeat = s;
+      while (emptySeatsToAssignRest.length < neededSeats) {
+        const righSeat = getRightSeatNumber(currentSeat);
+        if (!righSeat) break;
+        if (assignedPassengerMap.has(righSeat)) break;
+
+        emptySeatsToAssignRest.push(righSeat);
+        assignedAnchors.add(s);
+        const nextSeat = getRightSeatNumber(righSeat);
+        if (!nextSeat) break;
+        currentSeat = nextSeat;
+      }
+      if (emptySeatsToAssignRest.length >= neededSeats) break;
+    }
+  }
+  if (emptySeatsToAssignRest.length < neededSeats) return false;
 }
 
 // export function findEmptyNeighborBlock(
