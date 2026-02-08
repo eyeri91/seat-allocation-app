@@ -30,14 +30,6 @@ export function run() {
     flagKey: "isWCHR",
   });
 
-  for (const anchorData of wchrAnchors) {
-    assignRestNextToAnchor({
-      ...anchorData,
-      passengersByIds,
-      assignedPassengerMap,
-    });
-  }
-
   const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
     allSeatNumbers,
     assignedPassengerMap,

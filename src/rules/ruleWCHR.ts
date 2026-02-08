@@ -19,15 +19,18 @@ export function assignWchrGroups({
   passengersByIds,
   availableSeatNumbers,
   assignedPassengerMap,
-}: AssignSpecialData<"hasWCHR", "isWCHR">): SpecialGroupAnchor[] {
+}: AssignSpecialData<"hasWCHR", "isWCHR">): void {
   const results: SpecialGroupAnchor[] = [];
   const wchrGroups = getAllSpecialGroups(groups, "hasWCHR");
 
   const sortedWchrGroupsNumbers = sortGroupsByNumbers(
-    groups,
+    wchrGroups,
     passengersByIds,
     "isWCHR",
   );
+
+  let okCount = 0;
+  let failCount = 0;
 
   for (const group of sortedWchrGroupsNumbers) {
     const wchrIDs = getSpecialIdsInGroup(group, passengersByIds, "isWCHR");
@@ -50,22 +53,33 @@ export function assignWchrGroups({
         group.id,
         assignedPassengerMap,
       );
-      if (successful) anchorSeatNumbers.push(seatNumber);
-
-      const unassignedMembersId = getNonSpecialMembersIds(
-        group,
-        passengersByIds,
-        "isWCHR",
-      );
-
-      results.push({
-        groupId: group.id,
-        anchorSeatNumbers,
-        unassignedMembersId,
-      });
+      if (successful) {
+        okCount++;
+        anchorSeatNumbers.push(seatNumber);
+      } else {
+        failCount++;
+        console.log(
+          `[WCHR FAIL] group=${group.id} pax=${wchrId} seat=${seatNumber} mapHas=${assignedPassengerMap.has(seatNumber)}`,
+        );
+      }
     }
+
+    if (anchorSeatNumbers.length === 0) continue;
+    const unassignedMembersId = getNonSpecialMembersIds(
+      group,
+      passengersByIds,
+      "isWCHR",
+    );
+
+    assignRestNextToAnchor({
+      groupId: group.id,
+      anchorSeatNumbers,
+      unassignedMembersId,
+      passengersByIds,
+      assignedPassengerMap,
+    });
   }
-  return results;
+  console.log(`WCHR ok=${okCount} fail=${failCount}`);
 }
 
 export type AssignRestData = SpecialGroupAnchor & {
@@ -117,8 +131,6 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
     anchorSeats = fillEmptySeatsFromAnchors(anchorSeats, getRightSeatNumber);
   }
 
-  if (emptySeatsToAssignRest.length < neededSeats) return false;
-
   const assignCount = Math.min(
     emptySeatsToAssignRest.length,
     unassignedMembersId.length,
@@ -129,11 +141,15 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
     i < unassignedMembersId.length && i < emptySeatsToAssignRest.length;
   ) {
     const paxId = unassignedMembersId[i];
-    if (!paxId) break;
     const seatNumber = emptySeatsToAssignRest[i];
-    if (!seatNumber) break;
+    if (!paxId || !seatNumber) break;
+
     const passenger = passengersByIds.get(paxId);
-    if (!passenger) break;
+    if (!passenger) {
+      i++;
+      continue;
+    }
+
     const successful = tryAssignSeatToPassenger(
       seatNumber,
       passenger,
@@ -143,6 +159,7 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
 
     if (successful) {
       unassignedMembersId.splice(i, 1);
+      emptySeatsToAssignRest.splice(i, 1);
     } else {
       i++;
     }
@@ -177,6 +194,8 @@ export function assignRestNextToAnchor(inputs: AssignRestData) {
       }
     }
   }
-
+  console.log(
+    `[REST] group=${groupId} anchors=${anchorSeatNumbers.length} need=${neededSeats} gotNear=${emptySeatsToAssignRest.length} leftAfter=${unassignedMembersId.length}`,
+  );
   return unassignedMembersId.length === 0;
 }

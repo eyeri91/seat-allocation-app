@@ -6,10 +6,9 @@ import {
   type NeighboringSeatInfo,
   AISLE_SEAT_CODES,
   ROW,
+  Row
   SEATCODE,
 } from "../types/seats.js";
-import type { PassengerWithFlags } from "../types/special.js";
-
 import {
   getLeftSeatNumber,
   getRightSeatNumber,
@@ -82,15 +81,15 @@ export function getEligibleSeatsForSpecial(
     const leftSeat = getLeftSeatNumber(seat);
     const rightSeat = getRightSeatNumber(seat);
 
-    const leftAssigned = leftSeat
-      ? getAssignedPassenger(leftSeat, assignedPassengerMap)
-      : null;
-    const rightAssigned = leftSeat
-      ? getAssignedPassenger(leftSeat, assignedPassengerMap)
-      : null;
+    const leftPassenger =
+      leftSeat && assignedPassengerMap.has(leftSeat)
+        ? getAssignedPassenger(leftSeat, assignedPassengerMap).passenger
+        : null;
 
-    const leftPassenger = leftAssigned ? leftAssigned.passenger : null;
-    const rightPassenger = rightAssigned ? rightAssigned.passenger : null;
+    const rightPassenger =
+      rightSeat && assignedPassengerMap.has(rightSeat)
+        ? getAssignedPassenger(rightSeat, assignedPassengerMap).passenger
+        : null;
 
     if (
       isEligible(seat, { leftSeat, rightSeat, leftPassenger, rightPassenger })
@@ -99,4 +98,16 @@ export function getEligibleSeatsForSpecial(
     }
   }
   return eligibleSeats;
+}
+
+export function generateABJKSeats(rows: Row): SeatNumber[] {
+  const seatNumbers: SeatNumber[] = [];
+  const code = ["A", "B", "J", "K"] as const;
+
+  for (let row = 1; row <= rows; row++) {
+    for (const c of code) {
+      seatNumbers.push(`${row}${c}` as SeatNumber);
+    }
+  }
+  return seatNumbers;
 }

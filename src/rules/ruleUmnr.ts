@@ -22,13 +22,14 @@ export function assignUmnrGroups({
   const umnrGroups = getAllSpecialGroups(groups, "hasUMNR");
 
   const sortedUmnrGroupsNumbers = sortGroupsByNumbers(
-    groups,
+    umnrGroups,
     passengersByIds,
     "isUMNR",
   );
-
+  let totalMems = 0;
   for (const group of sortedUmnrGroupsNumbers) {
     const umnrIds = getSpecialIdsInGroup(group, passengersByIds, "isUMNR");
+    totalMems += umnrIds.length;
     if (umnrIds.length === 0) continue;
 
     const anchorSeatNumbers: SeatNumber[] = [];
@@ -63,5 +64,6 @@ export function assignUmnrGroups({
       });
     }
   }
+  console.log(`"total mems of UMNR : ${totalMems}`);
   return results;
 }
