@@ -51,7 +51,3 @@ export type NeighboringSeatInfo = {
 };
 
 
-type AssignFemalesNextToInput = {
-  assignedPassengerMap: AssignedPassengerMap;
-  unassignedFemales: PassengerWithFlags[]; // ✅ 여기서 직접 줄어듦
-}
