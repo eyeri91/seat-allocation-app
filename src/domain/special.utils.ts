@@ -30,27 +30,63 @@ export function isFemale(passenger: PassengerWithFlags): boolean {
   return passenger.gender === "F";
 }
 
-export function getWchrCount(
+type GroupSpecialKey = Extract<keyof Group, `has${string}`>;
+
+export function getAllSpecialGroups<Special extends GroupSpecialKey>(
+  groups: Group[],
+  specialKey: Special,
+) {
+  return groups.filter((g) => Boolean(g[specialKey]));
+}
+
+type PassengerSpecialKey = Extract<keyof PassengerWithFlags, `is${string}`>;
+
+export function getSpecialCount<Special extends PassengerSpecialKey>(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
+  specialKey: Special,
 ): { groupId: string; count: number } {
   let count = 0;
 
   for (const id of group.membersIds) {
     const passenger = passengersByIds.get(id);
-    if (passenger?.isWCHR) count += 1;
+    if (passenger?.[specialKey]) count += 1;
   }
   return { groupId: group.id, count };
 }
+export function sortGroupsByNumbers<Special extends PassengerSpecialKey>(
+  groups: Group[],
+  passengersByIds: Map<string, PassengerWithFlags>,
+  Special: Special,
+): Group[] {
+  return [...groups].sort((a, b) => {
+    const aCount = getSpecialCount(a, passengersByIds, Special).count;
+    const bCount = getSpecialCount(b, passengersByIds, Special).count;
 
-export function getWchrIdsInGroup(
+    if (aCount !== bCount) return bCount - aCount;
+    return b.size - a.size;
+  });
+}
+
+export function getSpecialIdsInGroup<Special extends PassengerSpecialKey>(
   group: Group,
   passengersByIds: Map<string, PassengerWithFlags>,
+  specialKey: Special,
 ): string[] {
-  let ids: string[] = [];
+  const ids: string[] = [];
   for (const id of group.membersIds) {
     const passenger = passengersByIds.get(id);
-    if (passenger?.isWCHR) ids.push(id);
+    if (passenger?.[specialKey]) ids.push(id);
   }
   return ids;
+}
+
+export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
+  group: Group,
+  passengersByIds: Map<string, PassengerWithFlags>,
+  specialKey: Special,
+): string[] {
+  return group.membersIds.filter(
+    (id) => !passengersByIds.get(id)?.[specialKey],
+  );
 }
