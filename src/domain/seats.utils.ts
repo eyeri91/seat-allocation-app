@@ -3,16 +3,19 @@ import {
   type AssignedPassengerMap,
   type SeatMap,
   type SeatNumber,
+  type NeighboringSeatInfo,
   AISLE_SEAT_CODES,
   ROW,
   SEATCODE,
 } from "../types/seats.js";
+import type { PassengerWithFlags } from "../types/special.js";
 
 import {
   getLeftSeatNumber,
   getRightSeatNumber,
   parseSeatNumber,
 } from "../utils/utils.js";
+import { getAssignedPassenger } from "./seatmap.utils.js";
 
 export function isAisle(seatNumber: SeatNumber): boolean {
   const { row, code } = parseSeatNumber(seatNumber);
@@ -63,4 +66,37 @@ export function getAllEmptySeatNumbers(
     if (!assignedPassengerMap.has(s)) results.push(s);
   }
   return results;
+}
+
+export function getEligibleSeatsForSpecial(
+  emptySeats: SeatNumber[],
+  assignedPassengerMap: AssignedPassengerMap,
+  isEligible: (
+    seatNumber: SeatNumber,
+    neighbors: NeighboringSeatInfo,
+  ) => boolean,
+): SeatNumber[] {
+  const eligibleSeats: SeatNumber[] = [];
+
+  for (const seat of emptySeats) {
+    const leftSeat = getLeftSeatNumber(seat);
+    const rightSeat = getRightSeatNumber(seat);
+
+    const leftAssigned = leftSeat
+      ? getAssignedPassenger(leftSeat, assignedPassengerMap)
+      : null;
+    const rightAssigned = leftSeat
+      ? getAssignedPassenger(leftSeat, assignedPassengerMap)
+      : null;
+
+    const leftPassenger = leftAssigned ? leftAssigned.passenger : null;
+    const rightPassenger = rightAssigned ? rightAssigned.passenger : null;
+
+    if (
+      isEligible(seat, { leftSeat, rightSeat, leftPassenger, rightPassenger })
+    ) {
+      eligibleSeats.push(seat);
+    }
+  }
+  return eligibleSeats;
 }

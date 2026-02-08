@@ -27,8 +27,6 @@ export type AssignSpecialData<
   passengersByIds: Map<string, PassengerWithFlags>;
   availableSeatNumbers: SeatNumber[];
   assignedPassengerMap: AssignedPassengerMap;
-
-  // ✅ 어떤 special을 처리하는지
   groupKey: GroupKey;
   flagKey: PassengerKey;
 };
