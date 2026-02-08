@@ -17,7 +17,7 @@ import { generateAllSeatNumbers } from "../domain/seats.utils.js";
 export function assignWchrGroups({
   groups,
   passengersByIds,
-  aisleSeatNumbers,
+  availableSeatNumbers,
   assignedPassengerMap,
 }: AssignSpecialData<"hasWCHR", "isWCHR">): SpecialGroupAnchor[] {
   const results: SpecialGroupAnchor[] = [];
@@ -39,7 +39,7 @@ export function assignWchrGroups({
       const passenger = passengersByIds.get(wchrId);
       if (!passenger) continue;
 
-      const seatNumber = aisleSeatNumbers.find(
+      const seatNumber = availableSeatNumbers.find(
         (seatNum) => !assignedPassengerMap.has(seatNum),
       );
       if (!seatNumber) break;

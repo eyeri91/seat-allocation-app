@@ -24,7 +24,7 @@ import {
 export function assignUmnrGroups({
   groups,
   passengersByIds,
-  aisleSeatNumbers,
+  availableSeatNumbers,
   assignedPassengerMap,
 }: AssignSpecialData<"hasUMNR", "isUMNR">): SpecialGroupAnchor[] {
   const results: SpecialGroupAnchor[] = [];
@@ -44,7 +44,7 @@ export function assignUmnrGroups({
       const passenger = passengersByIds.get(umnrId);
       if (!passenger) continue;
 
-      const seatNumber = aisleSeatNumbers.find(
+      const seatNumber = availableSeatNumbers.find(
         (seatNum) => !assignedPassengerMap.has(seatNum),
       );
       if (!seatNumber) break;

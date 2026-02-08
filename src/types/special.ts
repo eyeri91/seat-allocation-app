@@ -25,7 +25,7 @@ export type AssignSpecialData<
 > = {
   groups: Group[];
   passengersByIds: Map<string, PassengerWithFlags>;
-  aisleSeatNumbers: SeatNumber[];
+  availableSeatNumbers: SeatNumber[];
   assignedPassengerMap: AssignedPassengerMap;
 
   // ✅ 어떤 special을 처리하는지

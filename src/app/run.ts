@@ -4,6 +4,7 @@ import { createAssignedPassengerMap } from "../domain/seatmap.utils.js";
 import {
   generateAllAisleSeatNumbers,
   generateAllSeatNumbers,
+  getAllEmptySeatNumbers,
 } from "../domain/seats.utils.js";
 import { groups } from "../output/groups.js";
 import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
@@ -13,12 +14,16 @@ export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
   const assignedPassengerMap = createAssignedPassengerMap();
   const allSeatNumbers = generateAllSeatNumbers();
+  const leftEmptySeatNumbers = getAllEmptySeatNumbers(
+    allSeatNumbers,
+    assignedPassengerMap,
+  );
   const aisleSeatNumbers = generateAllAisleSeatNumbers();
 
   const wchrAnchors = assignWchrGroups({
     groups,
     passengersByIds,
-    aisleSeatNumbers,
+    availableSeatNumbers,
     assignedPassengerMap,
     groupKey: "hasWCHR",
     flagKey: "isWCHR",
@@ -35,7 +40,7 @@ export function run() {
   const umnrAnchors = assignUmnrGroups({
     groups,
     passengersByIds,
-    aisleSeatNumbers,
+    availableSeatNumbers,
     assignedPassengerMap,
     groupKey: "hasUMNR",
     flagKey: "isUMNR",
