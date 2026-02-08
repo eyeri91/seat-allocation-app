@@ -1,6 +1,6 @@
 import type { Passenger } from "../types/passenger.js";
 import type { Group } from "../types/groups.js";
-import type { PassengerWithFlags } from "../types/special.js";
+import type { PassengerWithFlags, AssignFemalesNextToInput } from "../types/special.js";
 import { buildPassengersMapById } from "./passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import type { GroupSpecialKey } from "../types/special.js";
@@ -83,4 +83,48 @@ export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
   return group.membersIds.filter(
     (id) => !passengersByIds.get(id)?.[specialFlag],
   );
+}
+
+export function assignFemalesNextTo({
+  assignedPassengerMap,
+  unassignedFemales,
+  isTarget,
+}: AssignFemalesNextToInput): number {
+  let assignedCount = 0;
+
+  for (const [targetSeat, assigned] of assignedPassengerMap.entries()) {
+    const targetPassenger = assigned.passenger;
+    if (!isTarget(targetPassenger)) continue;
+    if (unassignedFemales.length === 0) break;
+
+    const leftSeat = getLeftSeatNumber(targetSeat);
+    const rightSear= getRightSeatNumber(targetSeat);
+
+    const neighborSeats: (SeatNumber | null)[] = [leftSear, rightSeat];
+
+    for (const neighborSeat of neighborSeats) {
+      if (!neighborSeat) continue; // 없으면 skip
+      if (assignedPassengerMap.has(neighborSeat)) continue; // 이미 차있으면 skip
+      if (unassignedFemales.length === 0) break;
+
+      const female = unassignedFemales[0];
+      if (!female) break;
+
+      // ✅ groupId는 "옆에 붙는 target의 groupId"로 그냥 재사용 (별도 파라미터 없음)
+      const successful = tryAssignSeatToPassenger(
+        neighborSeat,
+        female,
+        assigned.groupId, // <-- target의 groupId 사용
+        assignedPassengerMap,
+      );
+
+      if (successful) {
+        unassignedFemales.shift(); // ✅ 리스트 업데이트
+        assignedCount++;
+        break; // 이 target은 한 명 붙였으니 다음 target
+      }
+    }
+  }
+
+  return assignedCount;
 }
