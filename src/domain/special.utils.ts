@@ -10,6 +10,8 @@ import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import type { GroupSpecialKey } from "../types/special.js";
 import { tryAssignSeatToPassenger } from "./seatmap.utils.js";
 import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
+import type { AssignedPassengerMap } from "../types/seats.js";
+import { isPassengerAssigned } from "./seats.utils.js";
 
 const passengersByIds = buildPassengersMapById(passengersWithFlags);
 

@@ -111,3 +111,13 @@ export function generateABJKSeats(rows: readonly Row[]): SeatNumber[] {
   }
   return seatNumbers;
 }
+
+export function isPassengerAssigned(
+  paxId: string,
+  assignedPassengerMap: AssignedPassengerMap,
+): boolean {
+  for (const assigned of assignedPassengerMap.values()) {
+    if (assigned.passenger.id === paxId) return true;
+  }
+  return false;
+}

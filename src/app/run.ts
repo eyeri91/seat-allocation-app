@@ -1,4 +1,7 @@
-import { buildPassengersMapById } from "../domain/passenger.utils.js";
+import {
+  buildPassengersMapById,
+  getUnassignedPassengers,
+} from "../domain/passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import { createAssignedPassengerMap } from "../domain/seatmap.utils.js";
 import {
@@ -14,6 +17,7 @@ import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
 import { assignUmnrGroups } from "../rules/ruleUMNR.js";
 import { ROW } from "../types/seats.js";
 import { assignFemalesNextTo } from "../domain/special.utils.js";
+
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
   const assignedPassengerMap = createAssignedPassengerMap();
@@ -63,45 +67,24 @@ export function run() {
     groupKey: "hasWCHR",
     flagKey: "isWCHR",
   });
+
   const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
     allSeatNumbers,
     assignedPassengerMap,
   );
   console.log(emptySeatNumbersAfterWchr.length);
 
-  //   const wchrAnchors = assignWchrGroups({
-  //     groups,
-  //     passengersByIds,
-  //     availableSeatNumbers: aisleSeatNumbers,
-  //     assignedPassengerMap,
-  //     groupKey: "hasWCHR",
-  //     flagKey: "isWCHR",
-  //   });
+  const unassgined = getUnassignedPassengers(
+    passengersWithFlags,
+    assignedPassengerMap,
+  );
+  const unassignedF = getUnassignedPassengers(
+    passengersWithFlags,
+    assignedPassengerMap,
+    (p) => p.gender === "F" && !p.isUMNR,
+  );
 
-  //   const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
-  //     allSeatNumbers,
-  //     assignedPassengerMap,
-  //   );
-
-  //   const eligibleSeats = getEligibleSeatsForSpecial(
-  //     emptySeatNumbersAfterWchr,
-  //     assignedPassengerMap,
-  //     (seat, neighbor) => {
-  //       const leftOk =
-  //         neighbor.leftPassenger &&
-  //         (neighbor.leftPassenger.gender === "F" ||
-  //           neighbor.leftPassenger.isUMNR);
-
-  //       const rightOk =
-  //         neighbor.rightPassenger &&
-  //         (neighbor.rightPassenger.gender === "F" ||
-  //           neighbor.rightPassenger.isUMNR);
-
-  //       return Boolean(leftOk || rightOk);
-  //     },
-  //   );
-
-  //   console.log(emptySeatNumbersAfterUmnr.length);
-
+  console.log(unassgined.length);
+  console.log(unassignedF.length);
   return "end";
 }
