@@ -13,7 +13,7 @@ import {
   allAisleSeats,
 } from "../domain/seats.utils.js";
 import { groups } from "../output/groups.js";
-import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
+import { assignWchrGroups } from "../rules/ruleWCHR.js";
 import { assignUmnrGroups } from "../rules/ruleUMNR.js";
 import { ROW } from "../types/seats.js";
 import { assignFemalesNextTo } from "../domain/special.utils.js";
@@ -48,7 +48,7 @@ export function run() {
 
   assignFemalesNextTo({
     assignedPassengerMap,
-    unassignedFemales,
+    unassignedCandidates: unassignedFemales,
     isTarget: (p) => p.isUMNR,
   });
 

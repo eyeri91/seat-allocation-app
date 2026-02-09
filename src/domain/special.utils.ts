@@ -2,7 +2,7 @@ import type { Passenger } from "../types/passenger.js";
 import type { Group } from "../types/groups.js";
 import type {
   PassengerWithFlags,
-  AssignFemalesNextToInput,
+  AssignFemalesOrMuslimMalesFromGroupNextToInput,
 } from "../types/special.js";
 import type { SeatNumber } from "../types/seats.js";
 import { buildPassengersMapById } from "./passenger.utils.js";
@@ -95,15 +95,15 @@ export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
 
 export function assignFemalesNextTo({
   assignedPassengerMap,
-  unassignedFemales,
+  unassignedCandidates,
   isTarget,
-}: AssignFemalesNextToInput): number {
+}: AssignFemalesOrMuslimMalesFromGroupNextToInput): number {
   let assignedCount = 0;
 
   for (const [targetSeat, assigned] of assignedPassengerMap.entries()) {
     const targetPassenger = assigned.passenger;
     if (!isTarget(targetPassenger)) continue;
-    if (unassignedFemales.length === 0) break;
+    if (unassignedCandidates.length === 0) break;
 
     const leftSeat = getLeftSeatNumber(targetSeat);
     const rightSeat = getRightSeatNumber(targetSeat);
@@ -113,9 +113,9 @@ export function assignFemalesNextTo({
     for (const neighborSeat of neighborSeats) {
       if (!neighborSeat) continue; // 없으면 skip
       if (assignedPassengerMap.has(neighborSeat)) continue; // 이미 차있으면 skip
-      if (unassignedFemales.length === 0) break;
+      if (unassignedCandidates.length === 0) break;
 
-      const female = unassignedFemales[0];
+      const female = unassignedCandidates[0];
       if (!female) break;
 
       const groupIdForFemale = female.group[0] as string; // 항상 존재한다고 했으니
@@ -127,7 +127,7 @@ export function assignFemalesNextTo({
       );
 
       if (successful) {
-        unassignedFemales.shift(); // ✅ 리스트 업데이트
+        unassignedCandidates.shift(); // ✅ 리스트 업데이트
         assignedCount++;
         break; // 이 target은 한 명 붙였으니 다음 target
       }
@@ -135,4 +135,16 @@ export function assignFemalesNextTo({
   }
   console.log(assignedCount);
   return assignedCount;
+}
+
+export function buildUnassignedFemales(
+  passengers: PassengerWithFlags[],
+  assignedPassengerMap: AssignedPassengerMap,
+): PassengerWithFlags[] {
+  return passengers.filter(
+    (p) =>
+      p.gender === "F" &&
+      !p.isUMNR &&
+      !isPassengerAssigned(p.id, assignedPassengerMap),
+  );
 }

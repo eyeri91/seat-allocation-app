@@ -37,8 +37,8 @@ export type SpecialGroupAnchor = {
   unassignedMembersId: string[];
 };
 
-export type AssignFemalesNextToInput = {
+export type AssignFemalesOrMuslimMalesFromGroupNextToInput = {
   assignedPassengerMap: AssignedPassengerMap;
-  unassignedFemales: PassengerWithFlags[]; // ✅ 성공하면 여기서 제거됨
-  isTarget: (p: PassengerWithFlags) => boolean; // ✅ 예: (p)=>p.isUMNR or (p)=>p.isFemaleMuslim
+  unassignedCandidates: PassengerWithFlags[];
+  isTarget: (p: PassengerWithFlags) => boolean;
 };

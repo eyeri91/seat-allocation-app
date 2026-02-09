@@ -44,115 +44,117 @@ export function getAssignedPassenger(
   return assignedPassenger;
 }
 
-export function assignRestNextToAnchor(inputs: AssignRestData) {
-  const {
-    groupId,
-    unassignedMembersId,
-    anchorSeatNumbers,
-    passengersByIds,
-    assignedPassengerMap,
-  } = inputs;
+// // assignRestNext
 
-  const neededSeats = unassignedMembersId.length;
-  if (neededSeats === 0) return true;
+// export function assignRestNextToAnchor(inputs: AssignRestData) {
+//   const {
+//     groupId,
+//     unassignedMembersId,
+//     anchorSeatNumbers,
+//     passengersByIds,
+//     assignedPassengerMap,
+//   } = inputs;
 
-  const emptySeatsToAssignRest: SeatNumber[] = [];
-  let anchorSeats: SeatNumber[] = [...anchorSeatNumbers];
+//   const neededSeats = unassignedMembersId.length;
+//   if (neededSeats === 0) return true;
 
-  const fillEmptySeatsFromAnchors = (
-    anchors: SeatNumber[],
-    getNextSeat: (seat: SeatNumber) => SeatNumber | null,
-  ) => {
-    const usedAnchors = new Set<SeatNumber>();
+//   const emptySeatsToAssignRest: SeatNumber[] = [];
+//   let anchorSeats: SeatNumber[] = [...anchorSeatNumbers];
 
-    for (const anchor of anchors) {
-      let currentSeat = anchor;
-      while (emptySeatsToAssignRest.length < neededSeats) {
-        const next = getNextSeat(currentSeat);
-        if (!next) break;
-        if (assignedPassengerMap.has(next)) break;
+//   const fillEmptySeatsFromAnchors = (
+//     anchors: SeatNumber[],
+//     getNextSeat: (seat: SeatNumber) => SeatNumber | null,
+//   ) => {
+//     const usedAnchors = new Set<SeatNumber>();
 
-        emptySeatsToAssignRest.push(next);
-        usedAnchors.add(anchor);
+//     for (const anchor of anchors) {
+//       let currentSeat = anchor;
+//       while (emptySeatsToAssignRest.length < neededSeats) {
+//         const next = getNextSeat(currentSeat);
+//         if (!next) break;
+//         if (assignedPassengerMap.has(next)) break;
 
-        currentSeat = next;
-      }
+//         emptySeatsToAssignRest.push(next);
+//         usedAnchors.add(anchor);
 
-      if (emptySeatsToAssignRest.length >= neededSeats) break;
-    }
-    return anchors.filter((a) => !usedAnchors.has(a));
-  };
+//         currentSeat = next;
+//       }
 
-  anchorSeats = fillEmptySeatsFromAnchors(anchorSeats, getLeftSeatNumber);
-  if (emptySeatsToAssignRest.length < neededSeats) {
-    anchorSeats = fillEmptySeatsFromAnchors(anchorSeats, getRightSeatNumber);
-  }
+//       if (emptySeatsToAssignRest.length >= neededSeats) break;
+//     }
+//     return anchors.filter((a) => !usedAnchors.has(a));
+//   };
 
-  const assignCount = Math.min(
-    emptySeatsToAssignRest.length,
-    unassignedMembersId.length,
-  );
+//   anchorSeats = fillEmptySeatsFromAnchors(anchorSeats, getLeftSeatNumber);
+//   if (emptySeatsToAssignRest.length < neededSeats) {
+//     anchorSeats = fillEmptySeatsFromAnchors(anchorSeats, getRightSeatNumber);
+//   }
 
-  for (
-    let i = 0;
-    i < unassignedMembersId.length && i < emptySeatsToAssignRest.length;
-  ) {
-    const paxId = unassignedMembersId[i];
-    const seatNumber = emptySeatsToAssignRest[i];
-    if (!paxId || !seatNumber) break;
+//   const assignCount = Math.min(
+//     emptySeatsToAssignRest.length,
+//     unassignedMembersId.length,
+//   );
 
-    const passenger = passengersByIds.get(paxId);
-    if (!passenger) {
-      i++;
-      continue;
-    }
+//   for (
+//     let i = 0;
+//     i < unassignedMembersId.length && i < emptySeatsToAssignRest.length;
+//   ) {
+//     const paxId = unassignedMembersId[i];
+//     const seatNumber = emptySeatsToAssignRest[i];
+//     if (!paxId || !seatNumber) break;
 
-    const successful = tryAssignSeatToPassenger(
-      seatNumber,
-      passenger,
-      groupId,
-      assignedPassengerMap,
-    );
+//     const passenger = passengersByIds.get(paxId);
+//     if (!passenger) {
+//       i++;
+//       continue;
+//     }
 
-    if (successful) {
-      unassignedMembersId.splice(i, 1);
-      emptySeatsToAssignRest.splice(i, 1);
-    } else {
-      i++;
-    }
-  }
+//     const successful = tryAssignSeatToPassenger(
+//       seatNumber,
+//       passenger,
+//       groupId,
+//       assignedPassengerMap,
+//     );
 
-  if (unassignedMembersId.length > 0) {
-    const allSeats = generateAllSeatNumbers();
-    const emptySeats = allSeats.filter((s) => !assignedPassengerMap.has(s));
+//     if (successful) {
+//       unassignedMembersId.splice(i, 1);
+//       emptySeatsToAssignRest.splice(i, 1);
+//     } else {
+//       i++;
+//     }
+//   }
 
-    for (let i = 0; i < unassignedMembersId.length && i < emptySeats.length; ) {
-      const paxId = unassignedMembersId[i];
-      const seatNumber = emptySeats.shift();
-      if (!paxId || !seatNumber) break;
+//   if (unassignedMembersId.length > 0) {
+//     const allSeats = generateAllSeatNumbers();
+//     const emptySeats = allSeats.filter((s) => !assignedPassengerMap.has(s));
 
-      const passenger = passengersByIds.get(paxId);
-      if (!passenger) {
-        i++;
-        continue;
-      }
+//     for (let i = 0; i < unassignedMembersId.length && i < emptySeats.length; ) {
+//       const paxId = unassignedMembersId[i];
+//       const seatNumber = emptySeats.shift();
+//       if (!paxId || !seatNumber) break;
 
-      const successful = tryAssignSeatToPassenger(
-        seatNumber,
-        passenger,
-        groupId,
-        assignedPassengerMap,
-      );
+//       const passenger = passengersByIds.get(paxId);
+//       if (!passenger) {
+//         i++;
+//         continue;
+//       }
 
-      if (successful) {
-        unassignedMembersId.splice(i, 1);
-      } else {
-        i++;
-      }
-    }
-  }
-  console.log(
-    `[REST] group=${groupId} anchors=${anchorSeatNumbers.length} need=${neededSeats} gotNear=${emptySeatsToAssignRest.length} leftAfter=${unassignedMembersId.length}`,
-  );
-  return unassignedMembersId.length === 0;
-}
+//       const successful = tryAssignSeatToPassenger(
+//         seatNumber,
+//         passenger,
+//         groupId,
+//         assignedPassengerMap,
+//       );
+
+//       if (successful) {
+//         unassignedMembersId.splice(i, 1);
+//       } else {
+//         i++;
+//       }
+//     }
+//   }
+//   console.log(
+//     `[REST] group=${groupId} anchors=${anchorSeatNumbers.length} need=${neededSeats} gotNear=${emptySeatsToAssignRest.length} leftAfter=${unassignedMembersId.length}`,
+//   );
+//   return unassignedMembersId.length === 0;
+// }
