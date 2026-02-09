@@ -92,9 +92,9 @@ export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
 }
 
 export function assignFemalesNextTo({
-  assignedPassengerMap: Map<string, Passenger>,
-  unassignedFemales: Passenger[],
-  isTarget: (p: Passenger) => boolean,
+  assignedPassengerMap,
+  unassignedFemales,
+  isTarget,
 }: AssignFemalesNextToInput): number {
   let assignedCount = 0;
 
@@ -131,6 +131,6 @@ export function assignFemalesNextTo({
       }
     }
   }
-
+  console.log(assignedCount);
   return assignedCount;
 }

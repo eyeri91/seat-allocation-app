@@ -70,14 +70,6 @@ export function assignWchrGroups({
       passengersByIds,
       "isWCHR",
     );
-
-    assignRestNextToAnchor({
-      groupId: group.id,
-      anchorSeatNumbers,
-      unassignedMembersId,
-      passengersByIds,
-      assignedPassengerMap,
-    });
   }
   console.log(`WCHR ok=${okCount} fail=${failCount}`);
 }

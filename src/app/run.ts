@@ -7,6 +7,7 @@ import {
   getAllEmptySeatNumbers,
   getEligibleSeatsForSpecial,
   generateABJKSeats,
+  allAisleSeats,
 } from "../domain/seats.utils.js";
 import { groups } from "../output/groups.js";
 import { assignWchrGroups, assignRestNextToAnchor } from "../rules/ruleWCHR.js";
@@ -52,7 +53,21 @@ export function run() {
     assignedPassengerMap,
   );
 
-  console.log(emptySeatNumbersAfterFemales);
+  console.log(emptySeatNumbersAfterFemales.length);
+
+  assignWchrGroups({
+    groups,
+    passengersByIds,
+    availableSeatNumbers: allAisleSeats,
+    assignedPassengerMap,
+    groupKey: "hasWCHR",
+    flagKey: "isWCHR",
+  });
+  const emptySeatNumbersAfterWchr = getAllEmptySeatNumbers(
+    allSeatNumbers,
+    assignedPassengerMap,
+  );
+  console.log(emptySeatNumbersAfterWchr.length);
 
   //   const wchrAnchors = assignWchrGroups({
   //     groups,
