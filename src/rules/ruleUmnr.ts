@@ -50,19 +50,13 @@ export function assignUmnrGroups({
         assignedPassengerMap,
       );
       if (successful) anchorSeatNumbers.push(seatNumber);
-
-      const unassignedMembersId = getNonSpecialMembersIds(
-        group,
-        passengersByIds,
-        "isUMNR",
-      );
-
+}
       results.push({
         groupId: group.id,
         anchorSeatNumbers,
-        unassignedMembersId,
-      });
-    }
+        unassignedMembersId:[],
+    
+    })
   }
   console.log(`"total mems of UMNR : ${totalMems}`);
   return results;
