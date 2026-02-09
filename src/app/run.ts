@@ -8,7 +8,6 @@ import {
   generateAllAisleSeatNumbers,
   generateAllSeatNumbers,
   getAllEmptySeatNumbers,
-  getEligibleSeatsForSpecial,
   generateABJKSeats,
   allAisleSeats,
 } from "../domain/seats.utils.js";
@@ -16,7 +15,10 @@ import { groups } from "../output/groups.js";
 import { assignWchrGroups } from "../rules/ruleWCHR.js";
 import { assignUmnrGroups } from "../rules/ruleUMNR.js";
 import { ROW } from "../types/seats.js";
-import { assignFemalesNextTo } from "../domain/special.utils.js";
+import {
+  assignFemalesNextTo,
+  buildUnassignedFemales,
+} from "../domain/special.utils.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
@@ -28,8 +30,9 @@ export function run() {
     assignedPassengerMap,
   );
   const aisleSeatNumbers = generateAllAisleSeatNumbers();
-  const unassignedFemales = passengersWithFlags.filter(
-    (p) => p.gender === "F" && !p.isUMNR,
+  const unassignedFemales = buildUnassignedFemales(
+    passengersWithFlags,
+    assignedPassengerMap,
   );
 
   const umnrAnchors = assignUmnrGroups({

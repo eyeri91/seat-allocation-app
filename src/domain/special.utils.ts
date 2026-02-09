@@ -148,3 +148,22 @@ export function buildUnassignedFemales(
       !isPassengerAssigned(p.id, assignedPassengerMap),
   );
 }
+
+export function buildUnassignedFemalesOrMaleMuslims(
+  targetPassenger: PassengerWithFlags,
+  passengers: PassengerWithFlags[],
+  assignedPassengerMap: AssignedPassengerMap,
+): PassengerWithFlags[] {
+  const targetGroupId = targetPassenger.group?.[0] as string;
+  return passengers.filter((p) => {
+    if (p.isUMNR) return false;
+
+    return (
+      p.gender === "F" ||
+      (p.gender === "M" &&
+        p.isMuslim === true &&
+        targetGroupId !== "" &&
+        p.group?.[0] === targetGroupId)
+    );
+  });
+}
