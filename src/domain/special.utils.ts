@@ -110,11 +110,11 @@ export function assignFemalesNextTo({
       const female = unassignedFemales[0];
       if (!female) break;
 
-      // ✅ groupId는 "옆에 붙는 target의 groupId"로 그냥 재사용 (별도 파라미터 없음)
+      const groupIdForFemale = female.group[0]; // 항상 존재한다고 했으니
       const successful = tryAssignSeatToPassenger(
         neighborSeat,
         female,
-        assigned.groupId, // <-- target의 groupId 사용
+        groupIdForFemale, // <-- target의 groupId 사용
         assignedPassengerMap,
       );
 
