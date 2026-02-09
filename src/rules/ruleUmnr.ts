@@ -62,14 +62,3 @@ export function assignUmnrGroups({
   return results;
 }
 
-export function getUmnrSeatNumbers(
-  assignedPassengerMap: AssignedPassengerMap,
-): SeatNumber[] {
-  const result: SeatNumber[] = [];
-
-  for (const [seat, assigned] of assignedPassengerMap.entries()) {
-    if (assigned.passenger.isUMNR) result.push(seat);
-  }
-
-  return result;
-}
