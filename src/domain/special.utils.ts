@@ -1,9 +1,15 @@
 import type { Passenger } from "../types/passenger.js";
 import type { Group } from "../types/groups.js";
-import type { PassengerWithFlags, AssignFemalesNextToInput } from "../types/special.js";
+import type {
+  PassengerWithFlags,
+  AssignFemalesNextToInput,
+} from "../types/special.js";
+import type { SeatNumber } from "../types/seats.js";
 import { buildPassengersMapById } from "./passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import type { GroupSpecialKey } from "../types/special.js";
+import { tryAssignSeatToPassenger } from "./seatmap.utils.js";
+import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 
 const passengersByIds = buildPassengersMapById(passengersWithFlags);
 
@@ -86,9 +92,9 @@ export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
 }
 
 export function assignFemalesNextTo({
-  assignedPassengerMap,
-  unassignedFemales,
-  isTarget,
+  assignedPassengerMap: Map<string, Passenger>,
+  unassignedFemales: Passenger[],
+  isTarget: (p: Passenger) => boolean,
 }: AssignFemalesNextToInput): number {
   let assignedCount = 0;
 
@@ -98,9 +104,9 @@ export function assignFemalesNextTo({
     if (unassignedFemales.length === 0) break;
 
     const leftSeat = getLeftSeatNumber(targetSeat);
-    const rightSear= getRightSeatNumber(targetSeat);
+    const rightSeat = getRightSeatNumber(targetSeat);
 
-    const neighborSeats: (SeatNumber | null)[] = [leftSear, rightSeat];
+    const neighborSeats: (SeatNumber | null)[] = [leftSeat, rightSeat];
 
     for (const neighborSeat of neighborSeats) {
       if (!neighborSeat) continue; // 없으면 skip
@@ -110,7 +116,7 @@ export function assignFemalesNextTo({
       const female = unassignedFemales[0];
       if (!female) break;
 
-      const groupIdForFemale = female.group[0]; // 항상 존재한다고 했으니
+      const groupIdForFemale = female.group[0] as string; // 항상 존재한다고 했으니
       const successful = tryAssignSeatToPassenger(
         neighborSeat,
         female,
