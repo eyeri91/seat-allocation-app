@@ -83,8 +83,14 @@ export function run() {
     assignedPassengerMap,
     (p) => p.gender === "F" && !p.isUMNR,
   );
+  const unassignedFandM = getUnassignedPassengers(
+    passengersWithFlags,
+    assignedPassengerMap,
+    (p) => p.gender === "F" && !p.isUMNR && p.isMuslim,
+  );
 
   console.log(unassgined.length);
   console.log(unassignedF.length);
+  console.log(unassignedFandM.length);
   return "end";
 }
