@@ -26,6 +26,12 @@ import {
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { assignFemalesOrMuslimMalesFromGroupNextTo } from "../rules/ruleFemaleMuslim.js";
 import type { PassengerWithFlags } from "../types/special.js";
+import {
+  frontRows,
+  getTotalWeightOfRow,
+  rearRows,
+  sumRows,
+} from "../rules/ruleWeight.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
@@ -139,6 +145,19 @@ export function run() {
     unassignedPassengersFinal,
     stillEmptySeatsFinal,
     assignedPassengerMap,
+  );
+  const rowWeight = getTotalWeightOfRow(assignedPassengerMap, ROW);
+
+  const frontTotal = sumRows(rowWeight, frontRows);
+  const rearTotal = sumRows(rowWeight, rearRows);
+
+  console.log(
+    "[WEIGHT] frontTotal=",
+    frontTotal,
+    "rearTotal=",
+    rearTotal,
+    "diff=",
+    frontTotal - rearTotal,
   );
 
   return "end";

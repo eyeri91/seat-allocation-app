@@ -42,10 +42,3 @@ export function getRightSeatNumber(seatNumber: SeatNumber): SeatNumber | null {
 
   return `${row}${rightCode}` as SeatNumber;
 }
-
-export function sumRows(rowWeight: Map<Row, number>, rows: Row[]) {
-  return rows.reduce(
-    (initial, rowNumber) => initial + (rowWeight.get(rowNumber) ?? 0),
-    0,
-  );
-}
