@@ -64,20 +64,10 @@ export function run() {
     flagKey: "isUMNR",
   });
 
-  logEachStep("UMNR ASSIGNMENT", {
-    totalUMNR: passengersWithFlags.filter((p) => p.isUMNR).length,
-    assignedAfterUMNR: assignedPassengerMap.size,
-  });
-
   const assginedFemaleCount = assignFemalesNextTo({
     assignedPassengerMap,
     unassignedCandidates: unassignedFemales,
     isTarget: (p) => p.isUMNR,
-  });
-
-  logEachStep("FEMALE NEXT TO UMNR", {
-    unassignedFemalesBefore: assginedFemaleCount,
-    assignedAfterFemaleRule: assignedPassengerMap.size,
   });
 
   assignWchrGroups({
@@ -87,11 +77,6 @@ export function run() {
     assignedPassengerMap,
     groupKey: "hasWCHR",
     flagKey: "isWCHR",
-  });
-
-  logEachStep("WCHR ASSIGNMENT", {
-    totalWCHR: passengersWithFlags.filter((p) => p.isWCHR).length,
-    totalAssignedAfterWCHR: assignedPassengerMap.size,
   });
 
   const emptyABJKSeats = allABJKSeats.filter(
@@ -127,12 +112,6 @@ export function run() {
     if (!isAssigned) break;
   }
 
-  logEachStep("FEMALE MUSLIM (ABJK)", {
-    unassignedFemaleMuslims: unassignedFemaleMuslims.length,
-    assignedFemaleMuslims: assignedMuslimFemales.length,
-    totalAssignedAfterFemaleMuslims: assignedPassengerMap.size,
-  });
-
   const unassignedRest = getUnassignedPassengers(
     passengersWithFlags,
     assignedPassengerMap,
@@ -147,11 +126,6 @@ export function run() {
     assignedPassengerMap,
     unassignedCandidates,
     isTarget: (p) => p.isFemaleMuslim,
-  });
-
-  logEachStep("FEMALE OR MUSLIM NEXT TO", {
-    candidates: unassignedCandidates.length,
-    totlAssignedAfterMuslimRule: assignedPassengerMap.size,
   });
 
   const unassignedPassengersFinal = getUnassignedPassengers(
@@ -175,17 +149,6 @@ export function run() {
     emptySeat: stillEmptySeatsFinal.length,
     assignedTotal: assignedPassengerMap.size,
   });
-
-  const rowWeight = getTotalWeightOfRow(assignedPassengerMap, ROW);
-
-  const frontTotal = sumRows(rowWeight, frontRows);
-  const rearTotal = sumRows(rowWeight, rearRows);
-
-  console.log("\n===== FRONT / REAR WEIGHT =====");
-  console.log(`Front rows (${frontRows.join(", ")}): ${frontTotal}`);
-  console.log(`Rear  rows (${rearRows.join(", ")}): ${rearTotal}`);
-  console.log("--------------------------------");
-  console.log(`Diff (front - rear): ${frontTotal - rearTotal}`);
 
   const output = buildSeatMapOutput(assignedPassengerMap);
   const outputWithRowInfo = buildSeatMapOutputByRow(assignedPassengerMap);
