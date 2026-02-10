@@ -7,9 +7,12 @@ export function getTotalWeightOfRow(
   rows: Row[],
 ): Map<Row, number> {
   const rowWeight = new Map<Row, number>();
-  for (const rowNumber of rows) rowWeight.set(rowNumber, 0);
+  for (const r of rows) rowWeight.set(r, 0);
   for (const [seat, assigned] of assignedPassengerMap.entries()) {
     const { row } = parseSeatNumber(seat);
     if (!rowWeight.has(row)) continue;
+
+    rowWeight.set(row, (rowWeight.get(row) ?? 0) + assigned.passenger.weight);
   }
+  return rowWeight;
 }

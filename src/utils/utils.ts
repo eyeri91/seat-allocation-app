@@ -1,6 +1,7 @@
 // getLeftSeatNumber
 import { SEATCODE } from "../types/seats.js";
-import type { Row, ROW, SeatCode, SeatNumber } from "../types/seats.js";
+import { ROW } from "../types/seats.js";
+import type { Row, SeatCode, SeatNumber } from "../types/seats.js";
 
 const seatCode = SEATCODE;
 
