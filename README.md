@@ -17,8 +17,8 @@ Mandatory safety rules are applied first, followed by best-effort preference rul
 
 ### Steps
 
-<pre> ```npm install 
-         npm run start ``` </pre>
+<pre> npm install 
+      npm run start  </pre>
 
 The output will be generated at: `output/finalSeatMap.json`
 
