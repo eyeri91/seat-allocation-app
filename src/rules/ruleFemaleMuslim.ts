@@ -1,5 +1,3 @@
-import { getUnassignedPassengers } from "../domain/passenger.utils.js";
-import { passengersWithFlags } from "../output/passengersWithFlags.js";
 import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import type { AssignFemalesOrMuslimMalesFromGroupNextToInput } from "../types/special.js";

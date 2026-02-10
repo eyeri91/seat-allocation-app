@@ -1,15 +1,24 @@
 // getLeftSeatNumber
 import { SEATCODE } from "../types/seats.js";
-import type { Row, SeatCode, SeatNumber } from "../types/seats.js";
+import type { Row, ROW, SeatCode, SeatNumber } from "../types/seats.js";
 
 const seatCode = SEATCODE;
 
-export function parseSeatNumber(seatNumber: SeatNumber) {
+export function parseSeatNumber(seatNumber: SeatNumber): {
+  row: Row;
+  code: SeatCode;
+} {
   const code = seatNumber.slice(-1) as SeatCode;
   const rowStr = seatNumber.slice(0, -1);
-  const row = Number(rowStr);
+  const rowNum = Number(rowStr);
+  if (!ROW.includes(rowNum as Row)) {
+    throw new Error(`Invalid seat row: ${seatNumber}`);
+  }
 
-  return { row, code };
+  return {
+    row: rowNum as Row,
+    code,
+  };
 }
 
 export function getLeftSeatNumber(seatNumber: SeatNumber): SeatNumber | null {

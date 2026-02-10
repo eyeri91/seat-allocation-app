@@ -6,7 +6,7 @@ import type {
 } from "../types/special.js";
 import type { SeatNumber } from "../types/seats.js";
 import { buildPassengersMapById } from "./passenger.utils.js";
-import { passengersWithFlags } from "../output/passengersWithFlags.js";
+import { passengersWithFlags } from "../generatedData/passengersWithFlags.js";
 import type { GroupSpecialKey } from "../types/special.js";
 import { tryAssignSeatToPassenger } from "./seatmap.utils.js";
 import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";

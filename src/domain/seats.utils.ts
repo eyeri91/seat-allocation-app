@@ -3,7 +3,6 @@ import {
   type AssignedPassengerMap,
   type SeatMap,
   type SeatNumber,
-  type NeighboringSeatInfo,
   AISLE_SEAT_CODES,
   ROW,
   type Row,
@@ -14,7 +13,6 @@ import {
   getRightSeatNumber,
   parseSeatNumber,
 } from "../utils/utils.js";
-import { getAssignedPassenger } from "./seatmap.utils.js";
 
 export function isAisle(seatNumber: SeatNumber): boolean {
   const { row, code } = parseSeatNumber(seatNumber);

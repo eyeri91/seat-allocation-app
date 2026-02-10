@@ -2,7 +2,7 @@ import {
   buildPassengersMapById,
   getUnassignedPassengers,
 } from "../domain/passenger.utils.js";
-import { passengersWithFlags } from "../output/passengersWithFlags.js";
+import { passengersWithFlags } from "../generatedData/passengersWithFlags.js";
 import {
   createAssignedPassengerMap,
   assginRestPassengers,
@@ -14,9 +14,9 @@ import {
   generateABJKSeats,
   allAisleSeats,
 } from "../domain/seats.utils.js";
-import { groups } from "../output/groups.js";
-import { assignWchrGroups } from "../rules/ruleWCHR.js";
-import { assignUmnrGroups } from "../rules/ruleUMNR.js";
+import { groups } from "../generatedData/groups.js";
+import { assignWchrGroups } from "../rules/ruleWchr.js";
+import { assignUmnrGroups } from "../rules/ruleUmnr.js";
 import { ROW, type SeatNumber } from "../types/seats.js";
 import {
   assignFemalesNextTo,
@@ -26,8 +26,6 @@ import {
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { assignFemalesOrMuslimMalesFromGroupNextTo } from "../rules/ruleFemaleMuslim.js";
 import type { PassengerWithFlags } from "../types/special.js";
-import { getSeatsWithEmptyNeighbor } from "../domain/seats.utils.js";
-import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
