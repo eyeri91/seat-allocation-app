@@ -7,6 +7,7 @@ import {
   createAssignedPassengerMap,
   assginRestPassengers,
   buildSeatMapOutput,
+  buildSeatMapOutputByRow,
 } from "../domain/seatmap.utils.js";
 import {
   generateAllAisleSeatNumbers,
@@ -34,7 +35,10 @@ import {
   sumRows,
 } from "../rules/ruleWeight.js";
 import { logEachStep } from "../utils/utils.js";
-import { writeSeatMapInOriginalStructure } from "../domain/writeSeatMapJson.js";
+import {
+  writeSeatMapInOriginalStructure,
+  writeSeatMapJsonWithRowInfo,
+} from "../domain/writeSeatMapJson.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
@@ -184,8 +188,10 @@ export function run() {
   console.log(`Diff (front - rear): ${frontTotal - rearTotal}`);
 
   const output = buildSeatMapOutput(assignedPassengerMap);
+  const outputWithRowInfo = buildSeatMapOutputByRow(assignedPassengerMap);
 
   writeSeatMapInOriginalStructure(output);
+  writeSeatMapJsonWithRowInfo(outputWithRowInfo);
 
   return assignedPassengerMap;
 }
