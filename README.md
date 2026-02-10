@@ -37,3 +37,5 @@ The output will be generated at: `output/finalSeatMap.json`
 ## Notes
 
 The project was developed incrementally using GitHub issues to break down and track individual tasks.
+
+# Repository: https://github.com/USERNAME/REPOSITORY
