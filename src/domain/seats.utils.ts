@@ -67,39 +67,6 @@ export function getAllEmptySeatNumbers(
   return results;
 }
 
-export function getEligibleSeatsForSpecial(
-  emptySeats: SeatNumber[],
-  assignedPassengerMap: AssignedPassengerMap,
-  isEligible: (
-    seatNumber: SeatNumber,
-    neighbors: NeighboringSeatInfo,
-  ) => boolean,
-): SeatNumber[] {
-  const eligibleSeats: SeatNumber[] = [];
-
-  for (const seat of emptySeats) {
-    const leftSeat = getLeftSeatNumber(seat);
-    const rightSeat = getRightSeatNumber(seat);
-
-    const leftPassenger =
-      leftSeat && assignedPassengerMap.has(leftSeat)
-        ? getAssignedPassenger(leftSeat, assignedPassengerMap).passenger
-        : null;
-
-    const rightPassenger =
-      rightSeat && assignedPassengerMap.has(rightSeat)
-        ? getAssignedPassenger(rightSeat, assignedPassengerMap).passenger
-        : null;
-
-    if (
-      isEligible(seat, { leftSeat, rightSeat, leftPassenger, rightPassenger })
-    ) {
-      eligibleSeats.push(seat);
-    }
-  }
-  return eligibleSeats;
-}
-
 export function generateABJKSeats(rows: readonly Row[]): SeatNumber[] {
   const seatNumbers: SeatNumber[] = [];
   const code = ["A", "B", "J", "K"] as const;

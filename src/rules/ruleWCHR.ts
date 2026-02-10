@@ -3,7 +3,6 @@ import type { AssignSpecialData } from "../types/special.js";
 import type { SpecialGroupAnchor } from "../types/special.js";
 
 import { getAllSpecialGroups } from "../domain/special.utils.js";
-import { getNonSpecialMembersIds } from "../domain/special.utils.js";
 import { sortGroupsByNumbers } from "../domain/special.utils.js";
 import { getSpecialIdsInGroup } from "../domain/special.utils.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
@@ -23,8 +22,8 @@ export function assignWchrGroups({
     "isWCHR",
   );
 
-  let okCount = 0;
-  let failCount = 0;
+  let assignedCount = 0;
+  let failedCount = 0;
 
   for (const group of sortedWchrGroupsNumbers) {
     const wchrIDs = getSpecialIdsInGroup(group, passengersByIds, "isWCHR");
@@ -48,21 +47,11 @@ export function assignWchrGroups({
         assignedPassengerMap,
       );
       if (successful) {
-        okCount++;
+        assignedCount++;
         anchorSeatNumbers.push(seatNumber);
       } else {
-        failCount++;
-        console.log(
-          `[WCHR FAIL] group=${group.id} pax=${wchrId} seat=${seatNumber} mapHas=${assignedPassengerMap.has(seatNumber)}`,
-        );
+        failedCount++;
       }
     }
-
-    if (anchorSeatNumbers.length === 0) continue;
-    const unassignedMembersId = getNonSpecialMembersIds(
-      group,
-      passengersByIds,
-      "isWCHR",
-    );
   }
 }

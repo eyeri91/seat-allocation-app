@@ -2,11 +2,9 @@ import type {
   AssignSpecialData,
   SpecialGroupAnchor,
 } from "../types/special.js";
-import type { SeatNumber, AssignedPassengerMap } from "../types/seats.js";
-import { isFemale } from "../domain/special.utils.js";
+import type { SeatNumber } from "../types/seats.js";
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { getSpecialIdsInGroup } from "../domain/special.utils.js";
-import { getNonSpecialMembersIds } from "../domain/special.utils.js";
 import {
   getAllSpecialGroups,
   sortGroupsByNumbers,

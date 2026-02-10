@@ -83,16 +83,6 @@ export function getSpecialIdsInGroup<Special extends PassengerSpecialKey>(
   return ids;
 }
 
-export function getNonSpecialMembersIds<Special extends PassengerSpecialKey>(
-  group: Group,
-  passengersByIds: Map<string, PassengerWithFlags>,
-  specialFlag: Special,
-): string[] {
-  return group.membersIds.filter(
-    (id) => !passengersByIds.get(id)?.[specialFlag],
-  );
-}
-
 export function assignFemalesNextTo({
   assignedPassengerMap,
   unassignedCandidates,
