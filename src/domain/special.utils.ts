@@ -133,15 +133,15 @@ export function assignFemalesNextTo({
       }
     }
   }
-  console.log(assignedCount);
+
   return assignedCount;
 }
 
 export function buildUnassignedFemales(
-  passengers: PassengerWithFlags[],
+  unassginedPassengers: PassengerWithFlags[],
   assignedPassengerMap: AssignedPassengerMap,
 ): PassengerWithFlags[] {
-  return passengers.filter(
+  return unassginedPassengers.filter(
     (p) =>
       p.gender === "F" &&
       !p.isUMNR &&
@@ -149,21 +149,23 @@ export function buildUnassignedFemales(
   );
 }
 
-export function buildUnassignedFemalesOrMaleMuslims(
-  targetPassenger: PassengerWithFlags,
-  passengers: PassengerWithFlags[],
-  assignedPassengerMap: AssignedPassengerMap,
+export function buildUnassignedFemalesOrMaleMuslimsFromSameGroup(
+  targetPassengers: PassengerWithFlags[],
+  unassginedPassengers: PassengerWithFlags[],
 ): PassengerWithFlags[] {
-  const targetGroupId = targetPassenger.group?.[0] as string;
-  return passengers.filter((p) => {
-    if (p.isUMNR) return false;
+  const targetGroupIds = new Set(
+    targetPassengers
+      .map((p) => p.group?.[0])
+      .filter((g): g is string => Boolean(g)),
+  );
+  return unassginedPassengers.filter((p) => {
+    const famaleCandidates = p.gender === "F";
 
-    return (
-      p.gender === "F" ||
-      (p.gender === "M" &&
-        p.isMuslim === true &&
-        targetGroupId !== "" &&
-        p.group?.[0] === targetGroupId)
-    );
+    const maleMuslimsInSameGroup =
+      p.gender === "M" &&
+      p.isMuslim === true &&
+      targetGroupIds.has(p.group?.[0] as string);
+
+    return famaleCandidates || maleMuslimsInSameGroup;
   });
 }

@@ -65,5 +65,4 @@ export function assignWchrGroups({
       "isWCHR",
     );
   }
-  console.log(`WCHR ok=${okCount} fail=${failCount}`);
 }

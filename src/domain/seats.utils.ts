@@ -121,3 +121,18 @@ export function isPassengerAssigned(
   }
   return false;
 }
+
+export function getSeatsWithEmptyNeighbor(
+  emptySeats: SeatNumber[],
+  assignedPassengerMap: AssignedPassengerMap,
+): SeatNumber | undefined {
+  return emptySeats.find((seat) => {
+    const leftSeat = getLeftSeatNumber(seat);
+    const rightSeat = getRightSeatNumber(seat);
+
+    const leftEmpty = leftSeat && !assignedPassengerMap.has(leftSeat);
+    const rightEmpty = rightSeat && !assignedPassengerMap.has(rightSeat);
+
+    return Boolean(leftEmpty || rightEmpty);
+  });
+}

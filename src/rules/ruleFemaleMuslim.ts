@@ -45,6 +45,6 @@ export function assignFemalesOrMuslimMalesFromGroupNextTo({
       }
     }
   }
-  console.log(`assignedCountOf fm or muslim : ${assignedCount}`);
+
   return assignedCount;
 }

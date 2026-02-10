@@ -57,6 +57,6 @@ export function assignUmnrGroups({
       unassignedMembersId: [],
     });
   }
-  console.log(`"total mems of UMNR : ${totalMems}`);
+
   return results;
 }
