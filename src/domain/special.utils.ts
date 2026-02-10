@@ -101,25 +101,25 @@ export function assignFemalesNextTo({
     const neighborSeats: (SeatNumber | null)[] = [leftSeat, rightSeat];
 
     for (const neighborSeat of neighborSeats) {
-      if (!neighborSeat) continue; // 없으면 skip
-      if (assignedPassengerMap.has(neighborSeat)) continue; // 이미 차있으면 skip
+      if (!neighborSeat) continue;
+      if (assignedPassengerMap.has(neighborSeat)) continue;
       if (unassignedCandidates.length === 0) break;
 
       const female = unassignedCandidates[0];
       if (!female) break;
 
-      const groupIdForFemale = female.group[0] as string; // 항상 존재한다고 했으니
+      const groupIdForFemale = female.group[0] as string;
       const successful = tryAssignSeatToPassenger(
         neighborSeat,
         female,
-        groupIdForFemale, // <-- target의 groupId 사용
+        groupIdForFemale,
         assignedPassengerMap,
       );
 
       if (successful) {
-        unassignedCandidates.shift(); // ✅ 리스트 업데이트
+        unassignedCandidates.shift();
         assignedCount++;
-        break; // 이 target은 한 명 붙였으니 다음 target
+        break;
       }
     }
   }
