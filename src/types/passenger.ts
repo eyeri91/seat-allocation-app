@@ -13,6 +13,6 @@ export interface Passenger {
 
 export type Gender = "M" | "F";
 
-export type OutputPassenger = PassengerWithFlags & {
+export type OutputPassenger = Passenger & {
   seat: SeatNumber;
 };

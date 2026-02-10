@@ -1,4 +1,4 @@
-import type { OutputPassenger } from "../types/passenger.js";
+import type { OutputPassenger, Passenger } from "../types/passenger.js";
 import type {
   AssignedPassenger,
   SeatNumber,
@@ -68,10 +68,39 @@ export function assginRestPassengers(
   }
 }
 
+export function buildSeatMapOutput(
+  assignedPassengerMap: AssignedPassengerMap,
+): Passenger[] {
+  const paxIdToSeat = new Map<string, SeatNumber>();
+
+  for (const [seat, assigned] of assignedPassengerMap.entries()) {
+    paxIdToSeat.set(assigned.passenger.id, seat);
+  }
+
+  const finalSeatMap: Passenger[] = [];
+
+  for (const [seat, assigned] of assignedPassengerMap.entries()) {
+    const pax = assigned.passenger;
+    const seat = paxIdToSeat.get(pax.id) ?? "";
+
+    finalSeatMap.push({
+      name: pax.name,
+      id: pax.id,
+      group: pax.group ?? [],
+      weight: pax.weight,
+      gender: pax.gender,
+      special: pax.special ?? "",
+      seat,
+    });
+  }
+
+  return finalSeatMap;
+}
+
 export function buildSeatMapOutputByRow(
   assignedPassengerMap: AssignedPassengerMap,
 ): { rows: OutputRow[] } {
-  const seatToPassenger = new Map<SeatNumber, PassengerWithFlags>();
+  const seatToPassenger = new Map<SeatNumber, Passenger>();
 
   for (const [seat, assigned] of assignedPassengerMap.entries()) {
     seatToPassenger.set(seat, assigned.passenger);
@@ -100,10 +129,6 @@ export function buildSeatMapOutputByRow(
         weight: pax.weight,
         gender: pax.gender,
         special: pax.special,
-        isWCHR: pax.isWCHR,
-        isUMNR: pax.isUMNR,
-        isMuslim: pax.isMuslim,
-        isFemaleMuslim: pax.isFemaleMuslim,
       };
     }
 
