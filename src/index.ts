@@ -12,4 +12,4 @@ const dataPath = path.join(__dirname, "../data/dataset.json");
 const raw = fs.readFileSync(dataPath, "utf-8");
 const passengers = JSON.parse(raw) as Passenger[];
 
-console.log(run());
+run();

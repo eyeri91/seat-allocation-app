@@ -5,15 +5,16 @@ import { fileURLToPath } from "url";
 import { makeGroup } from "./domain/groups.utils.js";
 import type { Passenger } from "./types/passenger.js";
 import { addSpecialFlags } from "./domain/special.utils.js";
+import { run } from "./app/run.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const inputPath = path.join(__dirname, "../data/dataset.json");
-const groupsOutputPath = path.join(__dirname, "./output/groups.ts");
+const groupsOutputPath = path.join(__dirname, "./generatedData/groups.ts");
 const passengersWithFlagsOutputPath = path.join(
   __dirname,
-  "./output/passengersWithFlags.ts",
+  "./generatedData/passengersWithFlags.ts",
 );
 
 const raw = fs.readFileSync(inputPath, "utf-8");
@@ -53,3 +54,5 @@ if (prevSpecial !== passengersWithFlagsData) {
 } else {
   console.log("Sorted passengersWithFlags.ts unchanged");
 }
+
+run();
