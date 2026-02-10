@@ -120,11 +120,6 @@ export function run() {
     unassignedRest,
   );
 
-  // console.log(`unassignedFemaleMuslims:${unassignedFemaleMuslims.length}`);
-  // console.log(`assignedMuslimFemales:${assignedMuslimFemales.length}`);
-  // console.log(`unassignedRest:${unassignedRest.length}`);
-  // console.log(`unassignedCandidates:${unassignedCandidates.length}`);
-
   assignFemalesOrMuslimMalesFromGroupNextTo({
     assignedPassengerMap,
     unassignedCandidates,
@@ -151,14 +146,11 @@ export function run() {
   const frontTotal = sumRows(rowWeight, frontRows);
   const rearTotal = sumRows(rowWeight, rearRows);
 
-  console.log(
-    "[WEIGHT] frontTotal=",
-    frontTotal,
-    "rearTotal=",
-    rearTotal,
-    "diff=",
-    frontTotal - rearTotal,
-  );
+  console.log("\n===== FRONT / REAR WEIGHT =====");
+  console.log(`Front rows (${frontRows.join(", ")}): ${frontTotal}`);
+  console.log(`Rear  rows (${rearRows.join(", ")}): ${rearTotal}`);
+  console.log("--------------------------------");
+  console.log(`Diff (front - rear): ${frontTotal - rearTotal}`);
 
   return "end";
 }

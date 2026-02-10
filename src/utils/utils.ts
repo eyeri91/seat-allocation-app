@@ -42,3 +42,10 @@ export function getRightSeatNumber(seatNumber: SeatNumber): SeatNumber | null {
 
   return `${row}${rightCode}` as SeatNumber;
 }
+
+export function logEachStep(title: string, data: Record<string, number>) {
+  console.log(`\n===== ${title} =====`);
+  for (const [key, value] of Object.entries(data)) {
+    console.log(`${key.padEnd(30)} : ${value}`);
+  }
+}
