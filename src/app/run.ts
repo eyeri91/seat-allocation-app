@@ -60,11 +60,6 @@ export function run() {
     isTarget: (p) => p.isUMNR,
   });
 
-  const emptySeatNumbersAfterFemales = getAllEmptySeatNumbers(
-    allSeatNumbers,
-    assignedPassengerMap,
-  );
-
   assignWchrGroups({
     groups,
     passengersByIds,
@@ -118,58 +113,16 @@ export function run() {
     unassignedRest,
   );
 
-  console.log(`unassignedFemaleMuslims:${unassignedFemaleMuslims.length}`);
-  console.log(`assignedMuslimFemales:${assignedMuslimFemales.length}`);
-  console.log(`unassignedRest:${unassignedRest.length}`);
-  console.log(`unassignedCandidates:${unassignedCandidates.length}`);
-
-  let assignedMuslimFemaleCount = 0;
-  let allABJKSeatsAssigned: SeatNumber[] = [];
+  // console.log(`unassignedFemaleMuslims:${unassignedFemaleMuslims.length}`);
+  // console.log(`assignedMuslimFemales:${assignedMuslimFemales.length}`);
+  // console.log(`unassignedRest:${unassignedRest.length}`);
+  // console.log(`unassignedCandidates:${unassignedCandidates.length}`);
 
   assignFemalesOrMuslimMalesFromGroupNextTo({
     assignedPassengerMap,
     unassignedCandidates,
     isTarget: (p) => p.isFemaleMuslim,
   });
-  const unassignedFemaleMuslimsAfter = getUnassignedPassengers(
-    passengersWithFlags,
-    assignedPassengerMap,
-    (p) => p.gender === "F" && p.isMuslim && !p.isUMNR && !p.isWCHR,
-  );
-  console.log(unassignedFemaleMuslimsAfter);
-  // for (const passenger of unassignedFemaleMuslims) {
-  //   const seat = getSeatsWithEmptyNeighbor(
-  //     emptyABJKSeats,
-  //     assignedPassengerMap,
-  //   );
-  //   if (!seat) break;
-
-  //   emptyABJKSeats.splice(emptyABJKSeats.indexOf(seat) - 1);
-  //   const groupId = passenger.group?.[0] as string;
-
-  //   const successful = tryAssignSeatToPassenger(
-  //     seat,
-  //     passenger,
-  //     groupId,
-  //     assignedPassengerMap,
-  //   );
-  //   if (successful) {
-  //     assignedMuslimFemaleCount++;
-  //     // assignedMuslimFemales.push(passenger);
-  //     allABJKSeatsAssigned.push(seat);
-  // }
-  // }
-
-  // console.log(`All assigned ABJKSeats new : ${allABJKSeatsAssigned.length}`);
-
-  // console.log("assigned muslim females into ABJK =", assignedMuslimFemaleCount);
-
-  // const emptySeatNumbersAfterFemaleMuslims = getAllEmptySeatNumbers(
-  //   allSeatNumbers,
-  //   assignedPassengerMap,
-  // );
-
-  // console.log(emptySeatNumbersAfterFemaleMuslims.length);
 
   return "end";
 }
