@@ -18,9 +18,13 @@ Mandatory safety rules are applied first, followed by best-effort preference rul
 ### Steps
 
 <pre> npm install 
-      npm run start  </pre>
+npm run start  </pre>
 
-The output will be generated at: `output/finalSeatMap.json`
+The output will be generated at: `output/finalSeatmap.json`
+
+The row-based seat map (`output/seatmapWithRow.json`) was retained for debugging and validation.  
+It helped verify weight balancing logic, where seats within a row are not changed, but rows can be swapped to balance weight.  
+The final submission output follows the original passenger JSON structure as required.
 
 ## Assumptions & Limitations
 
@@ -38,4 +42,6 @@ The output will be generated at: `output/finalSeatMap.json`
 
 The project was developed incrementally using GitHub issues to break down and track individual tasks.
 
-# Repository: https://github.com/USERNAME/REPOSITORY
+### Repository:
+
+https://github.com/USERNAME/REPOSITORY
