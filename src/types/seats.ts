@@ -1,4 +1,5 @@
 import type { Group } from "./groups.js";
+import type { OutputPassenger } from "./passenger.js";
 import type { PassengerWithFlags, SpecialGroupAnchor } from "./special.js";
 
 export type Row = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
@@ -53,4 +54,11 @@ export type NeighboringSeatInfo = {
 export type AssignRestData = SpecialGroupAnchor & {
   passengersByIds: Map<string, PassengerWithFlags>;
   assignedPassengerMap: AssignedPassengerMap;
+};
+
+export type OutputRow = {
+  rowId: `row${number}`;
+  rowNumber: number;
+  totalWeight: number;
+  seats: Record<SeatNumber, OutputPassenger | null>;
 };

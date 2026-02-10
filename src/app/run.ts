@@ -181,5 +181,5 @@ export function run() {
   console.log("--------------------------------");
   console.log(`Diff (front - rear): ${frontTotal - rearTotal}`);
 
-  return "end";
+  return assignedPassengerMap;
 }
