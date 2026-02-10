@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export function writeSeatMapJson(data: { rows: OutputRow[] }) {
-  const outputDir = path.join(__dirname, "../output");
+  const outputDir = path.join(__dirname, "../../output");
   const outputPath = path.join(outputDir, "finalSeatMap.json");
 
   if (!fs.existsSync(outputDir)) {

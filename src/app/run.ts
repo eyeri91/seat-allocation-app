@@ -34,7 +34,7 @@ import {
   sumRows,
 } from "../rules/ruleWeight.js";
 import { logEachStep } from "../utils/utils.js";
-import { writeSeatMapJson } from "../domain/makeSeatMapJson.js";
+import { writeSeatMapJson } from "../domain/writeSeatMapJson.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
