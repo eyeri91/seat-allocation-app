@@ -3,7 +3,10 @@ import {
   getUnassignedPassengers,
 } from "../domain/passenger.utils.js";
 import { passengersWithFlags } from "../output/passengersWithFlags.js";
-import { createAssignedPassengerMap } from "../domain/seatmap.utils.js";
+import {
+  createAssignedPassengerMap,
+  assginRestPassengers,
+} from "../domain/seatmap.utils.js";
 import {
   generateAllAisleSeatNumbers,
   generateAllSeatNumbers,
@@ -24,6 +27,7 @@ import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { assignFemalesOrMuslimMalesFromGroupNextTo } from "../rules/ruleFemaleMuslim.js";
 import type { PassengerWithFlags } from "../types/special.js";
 import { getSeatsWithEmptyNeighbor } from "../domain/seats.utils.js";
+import { getLeftSeatNumber, getRightSeatNumber } from "../utils/utils.js";
 
 export function run() {
   const passengersByIds = buildPassengersMapById(passengersWithFlags);
@@ -79,7 +83,6 @@ export function run() {
     (p) => p.gender === "F" && p.isMuslim,
   );
 
-  // here !
   let assignedMuslimFemales: PassengerWithFlags[] = [];
 
   for (const pax of unassignedFemaleMuslims) {
@@ -123,6 +126,22 @@ export function run() {
     unassignedCandidates,
     isTarget: (p) => p.isFemaleMuslim,
   });
+
+  const unassignedPassengersFinal = getUnassignedPassengers(
+    passengersWithFlags,
+    assignedPassengerMap,
+  );
+
+  const stillEmptySeatsFinal = getAllEmptySeatNumbers(
+    allSeatNumbers,
+    assignedPassengerMap,
+  );
+
+  assginRestPassengers(
+    unassignedPassengersFinal,
+    stillEmptySeatsFinal,
+    assignedPassengerMap,
+  );
 
   return "end";
 }

@@ -50,6 +50,6 @@ export function makeGroup(passengers: PassengerWithFlags[]): Group[] {
   return groups;
 }
 
-export function isAlone(group: Group): boolean {
-  return group.size === 1;
-}
+// export function isAlone(group: Group): boolean {
+//   return group.size === 1;
+// }
