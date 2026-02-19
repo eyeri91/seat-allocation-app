@@ -50,7 +50,7 @@ export function run() {
     assignedPassengerMap,
   );
 
-  const umnrAnchors = assignUmnrGroups({
+  assignUmnrGroups({
     groups,
     passengersByIds,
     availableSeatNumbers: allABJKSeats,
@@ -59,7 +59,7 @@ export function run() {
     flagKey: "isUMNR",
   });
 
-  const assginedFemaleCount = assignFemalesNextTo({
+  assignFemalesNextTo({
     assignedPassengerMap,
     unassignedCandidates: unassignedFemales,
     isTarget: (p) => p.isUMNR,
