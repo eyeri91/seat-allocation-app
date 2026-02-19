@@ -144,8 +144,8 @@ export function buildUnassignedFemalesOrMaleMuslimsFromSameGroup(
 ): PassengerWithFlags[] {
   const targetGroupIds = new Set(
     targetPassengers
-      .map((p) => p.group?.[0])
-      .filter((g): g is string => Boolean(g)),
+      .map((passenger) => passenger.group?.[0])
+      .filter((groupId): groupId is string => groupId !== undefined),
   );
   return unassginedPassengers.filter((p) => {
     const famaleCandidates = p.gender === "F";
