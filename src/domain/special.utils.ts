@@ -103,7 +103,6 @@ export function assignFemalesNextTo({
     for (const neighborSeat of neighborSeats) {
       if (!neighborSeat) continue;
       if (assignedPassengerMap.has(neighborSeat)) continue;
-      if (unassignedCandidates.length === 0) break;
 
       const female = unassignedCandidates[0];
       if (!female) break;
