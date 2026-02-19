@@ -59,7 +59,7 @@ export function run() {
     flagKey: "isUMNR",
   });
 
-  assignFemalesNextTo({
+  const assignedFemalesNextToUmnr = assignFemalesNextTo({
     assignedPassengerMap,
     unassignedCandidates: unassignedFemales,
     isTarget: (p) => p.isUMNR,
