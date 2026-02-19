@@ -1,4 +1,3 @@
-import type { Group } from "./groups.js";
 import type { OutputPassenger } from "./passenger.js";
 import type { PassengerWithFlags, SpecialGroupAnchor } from "./special.js";
 

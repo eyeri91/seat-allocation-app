@@ -1,5 +1,5 @@
 import type { SeatNumber } from "./seats.js";
-import type { PassengerWithFlags, Special } from "./special.js";
+import type { Special } from "./special.js";
 
 export interface Passenger {
   name: string;
