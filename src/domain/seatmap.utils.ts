@@ -12,13 +12,6 @@ export function createAssignedPassengerMap(): AssignedPassengerMap {
   return new Map<SeatNumber, AssignedPassenger>();
 }
 
-export function isEmpty(
-  seatNumber: SeatNumber,
-  assignedPassengerMap: AssignedPassengerMap,
-): boolean {
-  return !assignedPassengerMap.has(seatNumber);
-}
-
 export function tryAssignSeatToPassenger(
   seatNumber: SeatNumber,
   passenger: PassengerWithFlags,
