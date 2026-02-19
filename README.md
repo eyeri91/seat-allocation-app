@@ -44,4 +44,4 @@ The project was developed incrementally using GitHub issues to break down and tr
 
 ### Repository:
 
-https://github.com/USERNAME/REPOSITORY
+https://github.com/eyeri91/seat-allocation-app
