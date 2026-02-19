@@ -24,6 +24,7 @@ export function assignUmnrGroups({
     passengersByIds,
     "isUMNR",
   );
+
   let totalMems = 0;
   for (const group of sortedUmnrGroupsNumbers) {
     const umnrIds = getSpecialIdsInGroup(group, passengersByIds, "isUMNR");

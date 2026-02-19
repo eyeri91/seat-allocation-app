@@ -28,12 +28,7 @@ import {
 import { tryAssignSeatToPassenger } from "../domain/seatmap.utils.js";
 import { assignFemalesOrMuslimMalesFromGroupNextTo } from "../rules/ruleFemaleMuslim.js";
 import type { PassengerWithFlags } from "../types/special.js";
-import {
-  frontRows,
-  getTotalWeightOfRow,
-  rearRows,
-  sumRows,
-} from "../rules/ruleWeight.js";
+
 import { logEachStep } from "../utils/utils.js";
 import {
   writeSeatMapInOriginalStructure,
