@@ -147,13 +147,13 @@ export function buildUnassignedFemalesOrMaleMuslimsFromSameGroup(
       .map((passenger) => passenger.group?.[0])
       .filter((groupId): groupId is string => groupId !== undefined),
   );
-  return unassginedPassengers.filter((p) => {
-    const famaleCandidates = p.gender === "F";
+  return unassginedPassengers.filter((passenger) => {
+    const famaleCandidates = passenger.gender === "F";
 
     const maleMuslimsInSameGroup =
-      p.gender === "M" &&
-      p.isMuslim === true &&
-      targetGroupIds.has(p.group?.[0] as string);
+      passenger.gender === "M" &&
+      passenger.isMuslim === true &&
+      targetGroupIds.has(passenger.group?.[0] as string);
 
     return famaleCandidates || maleMuslimsInSameGroup;
   });
