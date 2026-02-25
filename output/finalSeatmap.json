@@ -309,7 +309,7 @@
     "weight": 99,
     "gender": "F",
     "special": "Muslim",
-    "seat": "2J"
+    "seat": "10K"
   },
   {
     "name": "Gabriela Rogers",
@@ -322,7 +322,7 @@
     "weight": 75,
     "gender": "F",
     "special": "Muslim",
-    "seat": "2K"
+    "seat": "10J"
   },
   {
     "name": "Nafisa Rahman",
@@ -333,7 +333,7 @@
     "weight": 80,
     "gender": "F",
     "special": "Muslim",
-    "seat": "3A"
+    "seat": "10B"
   },
   {
     "name": "Meryem AL Qamzi",
@@ -344,7 +344,7 @@
     "weight": 58,
     "gender": "F",
     "special": "Muslim",
-    "seat": "3B"
+    "seat": "10A"
   },
   {
     "name": "Noha Harb",
@@ -355,7 +355,7 @@
     "weight": 100,
     "gender": "F",
     "special": "Muslim",
-    "seat": "3J"
+    "seat": "9K"
   },
   {
     "name": "Amelia Campbell",
@@ -370,7 +370,7 @@
     "weight": 110,
     "gender": "F",
     "special": "Muslim",
-    "seat": "3K"
+    "seat": "9J"
   },
   {
     "name": "Sara Al Hadrani",
@@ -383,7 +383,7 @@
     "weight": 96,
     "gender": "F",
     "special": "Muslim",
-    "seat": "4A"
+    "seat": "9B"
   },
   {
     "name": "Khadiqa Mustafa",
@@ -395,7 +395,7 @@
     "weight": 57,
     "gender": "F",
     "special": "Muslim",
-    "seat": "4B"
+    "seat": "9A"
   },
   {
     "name": "Latifa Hamdan",
@@ -408,7 +408,7 @@
     "weight": 57,
     "gender": "F",
     "special": "Muslim",
-    "seat": "4J"
+    "seat": "8K"
   },
   {
     "name": "Mia Salim",
@@ -419,7 +419,7 @@
     "weight": 106,
     "gender": "F",
     "special": "Muslim",
-    "seat": "4K"
+    "seat": "8J"
   },
   {
     "name": "Rania Mustafa",
@@ -431,7 +431,7 @@
     "weight": 69,
     "gender": "F",
     "special": "Muslim",
-    "seat": "5A"
+    "seat": "8B"
   },
   {
     "name": "Zoey Ruiz",
@@ -444,7 +444,83 @@
     "weight": 68,
     "gender": "F",
     "special": "Muslim",
-    "seat": "5B"
+    "seat": "8A"
+  },
+  {
+    "name": "Alejandro Torres",
+    "id": "pax014",
+    "group": [
+      "pax085",
+      "pax060",
+      "pax100"
+    ],
+    "weight": 97,
+    "gender": "F",
+    "special": "",
+    "seat": "10H"
+  },
+  {
+    "name": "Ella Allen",
+    "id": "pax016",
+    "group": [
+      "pax021",
+      "pax081"
+    ],
+    "weight": 63,
+    "gender": "F",
+    "special": "",
+    "seat": "10C"
+  },
+  {
+    "name": "Lily Foster",
+    "id": "pax017",
+    "group": [
+      "pax075",
+      "pax062",
+      "pax025",
+      "pax098"
+    ],
+    "weight": 60,
+    "gender": "F",
+    "special": "",
+    "seat": "9H"
+  },
+  {
+    "name": "Scarlett Harris",
+    "id": "pax021",
+    "group": [
+      "pax081",
+      "pax016"
+    ],
+    "weight": 71,
+    "gender": "F",
+    "special": "",
+    "seat": "9C"
+  },
+  {
+    "name": "Olivia Moore",
+    "id": "pax022",
+    "group": [
+      "pax089",
+      "pax043"
+    ],
+    "weight": 82,
+    "gender": "F",
+    "special": "",
+    "seat": "8H"
+  },
+  {
+    "name": "Kautar Khan",
+    "id": "pax023",
+    "group": [
+      "pax061",
+      "pax071",
+      "pax024"
+    ],
+    "weight": 55,
+    "gender": "F",
+    "special": "",
+    "seat": "8C"
   },
   {
     "name": "Albert Rogers",
@@ -510,7 +586,7 @@
     "weight": 81,
     "gender": "M",
     "special": "",
-    "seat": "3E"
+    "seat": "2J"
   },
   {
     "name": "Avery White",
@@ -522,20 +598,7 @@
     "weight": 65,
     "gender": "M",
     "special": "",
-    "seat": "3F"
-  },
-  {
-    "name": "Alejandro Torres",
-    "id": "pax014",
-    "group": [
-      "pax085",
-      "pax060",
-      "pax100"
-    ],
-    "weight": 97,
-    "gender": "F",
-    "special": "",
-    "seat": "4E"
+    "seat": "2K"
   },
   {
     "name": "Jack Hughes",
@@ -548,33 +611,7 @@
     "weight": 78,
     "gender": "M",
     "special": "",
-    "seat": "4F"
-  },
-  {
-    "name": "Ella Allen",
-    "id": "pax016",
-    "group": [
-      "pax021",
-      "pax081"
-    ],
-    "weight": 63,
-    "gender": "F",
-    "special": "",
-    "seat": "5E"
-  },
-  {
-    "name": "Lily Foster",
-    "id": "pax017",
-    "group": [
-      "pax075",
-      "pax062",
-      "pax025",
-      "pax098"
-    ],
-    "weight": 60,
-    "gender": "F",
-    "special": "",
-    "seat": "5F"
+    "seat": "3A"
   },
   {
     "name": "Ali Hamdan",
@@ -587,44 +624,7 @@
     "weight": 96,
     "gender": "M",
     "special": "",
-    "seat": "5H"
-  },
-  {
-    "name": "Scarlett Harris",
-    "id": "pax021",
-    "group": [
-      "pax081",
-      "pax016"
-    ],
-    "weight": 71,
-    "gender": "F",
-    "special": "",
-    "seat": "5J"
-  },
-  {
-    "name": "Olivia Moore",
-    "id": "pax022",
-    "group": [
-      "pax089",
-      "pax043"
-    ],
-    "weight": 82,
-    "gender": "F",
-    "special": "",
-    "seat": "5K"
-  },
-  {
-    "name": "Kautar Khan",
-    "id": "pax023",
-    "group": [
-      "pax061",
-      "pax071",
-      "pax024"
-    ],
-    "weight": 55,
-    "gender": "F",
-    "special": "",
-    "seat": "6A"
+    "seat": "3B"
   },
   {
     "name": "Adrian Kim",
@@ -637,7 +637,7 @@
     "weight": 75,
     "gender": "M",
     "special": "",
-    "seat": "6B"
+    "seat": "3E"
   },
   {
     "name": "Logan Long",
@@ -651,7 +651,7 @@
     "weight": 50,
     "gender": "M",
     "special": "",
-    "seat": "6C"
+    "seat": "3F"
   },
   {
     "name": "Aila Edwards",
@@ -662,7 +662,7 @@
     "weight": 72,
     "gender": "F",
     "special": "",
-    "seat": "6D"
+    "seat": "3J"
   },
   {
     "name": "Mateo Cruz",
@@ -671,7 +671,7 @@
     "weight": 60,
     "gender": "M",
     "special": "",
-    "seat": "6E"
+    "seat": "3K"
   },
   {
     "name": "Joshua Hall",
@@ -688,7 +688,7 @@
     "weight": 110,
     "gender": "M",
     "special": "",
-    "seat": "6F"
+    "seat": "4A"
   },
   {
     "name": "Wyatt Carter",
@@ -702,7 +702,7 @@
     "weight": 76,
     "gender": "M",
     "special": "",
-    "seat": "6G"
+    "seat": "4B"
   },
   {
     "name": "Grace Mitchell",
@@ -715,7 +715,7 @@
     "weight": 55,
     "gender": "F",
     "special": "",
-    "seat": "6H"
+    "seat": "4E"
   },
   {
     "name": "Nadia Bailey",
@@ -732,7 +732,7 @@
     "weight": 71,
     "gender": "F",
     "special": "",
-    "seat": "6J"
+    "seat": "4F"
   },
   {
     "name": "Edward Alvarez",
@@ -746,7 +746,7 @@
     "weight": 76,
     "gender": "M",
     "special": "",
-    "seat": "6K"
+    "seat": "4J"
   },
   {
     "name": "Nikolai Sanchez",
@@ -761,7 +761,7 @@
     "weight": 68,
     "gender": "M",
     "special": "",
-    "seat": "7A"
+    "seat": "4K"
   },
   {
     "name": "James Cooper",
@@ -772,7 +772,7 @@
     "weight": 108,
     "gender": "M",
     "special": "",
-    "seat": "7B"
+    "seat": "5A"
   },
   {
     "name": "Marina Wilson",
@@ -785,7 +785,7 @@
     "weight": 93,
     "gender": "F",
     "special": "",
-    "seat": "7C"
+    "seat": "5B"
   },
   {
     "name": "Ella Young",
@@ -797,7 +797,7 @@
     "weight": 76,
     "gender": "F",
     "special": "",
-    "seat": "7D"
+    "seat": "5E"
   },
   {
     "name": "Cedrik Morris",
@@ -809,7 +809,7 @@
     "weight": 61,
     "gender": "M",
     "special": "",
-    "seat": "7E"
+    "seat": "5F"
   },
   {
     "name": "Ali Al Qamzi",
@@ -820,7 +820,7 @@
     "weight": 72,
     "gender": "M",
     "special": "Muslim",
-    "seat": "7F"
+    "seat": "5H"
   },
   {
     "name": "Luna Cruz",
@@ -832,7 +832,7 @@
     "weight": 92,
     "gender": "F",
     "special": "",
-    "seat": "7G"
+    "seat": "5J"
   },
   {
     "name": "Jing Hua Mao",
@@ -844,7 +844,7 @@
     "weight": 51,
     "gender": "M",
     "special": "",
-    "seat": "7H"
+    "seat": "5K"
   },
   {
     "name": "Zak Murphy",
@@ -855,7 +855,7 @@
     "weight": 70,
     "gender": "M",
     "special": "",
-    "seat": "7J"
+    "seat": "6A"
   },
   {
     "name": "Lau Fang Bo",
@@ -867,7 +867,7 @@
     "weight": 106,
     "gender": "M",
     "special": "",
-    "seat": "7K"
+    "seat": "6B"
   },
   {
     "name": "Matthew Richardson",
@@ -884,7 +884,7 @@
     "weight": 85,
     "gender": "M",
     "special": "",
-    "seat": "8A"
+    "seat": "6C"
   },
   {
     "name": "Isabella Torres",
@@ -897,7 +897,7 @@
     "weight": 106,
     "gender": "F",
     "special": "",
-    "seat": "8B"
+    "seat": "6D"
   },
   {
     "name": "William Scott",
@@ -911,7 +911,7 @@
     "weight": 57,
     "gender": "M",
     "special": "",
-    "seat": "8C"
+    "seat": "6E"
   },
   {
     "name": "Andrew Phillips",
@@ -925,7 +925,7 @@
     "weight": 73,
     "gender": "M",
     "special": "",
-    "seat": "8D"
+    "seat": "6F"
   },
   {
     "name": "Victor Morris",
@@ -942,7 +942,7 @@
     "weight": 46,
     "gender": "M",
     "special": "",
-    "seat": "8E"
+    "seat": "6G"
   },
   {
     "name": "Sultan Rahman",
@@ -953,7 +953,7 @@
     "weight": 57,
     "gender": "M",
     "special": "",
-    "seat": "8F"
+    "seat": "6H"
   },
   {
     "name": "Noah Peterson",
@@ -967,7 +967,7 @@
     "weight": 73,
     "gender": "M",
     "special": "",
-    "seat": "8G"
+    "seat": "6J"
   },
   {
     "name": "Lucy Campbell",
@@ -979,7 +979,7 @@
     "weight": 84,
     "gender": "F",
     "special": "",
-    "seat": "8H"
+    "seat": "6K"
   },
   {
     "name": "Elias Ross",
@@ -992,7 +992,7 @@
     "weight": 52,
     "gender": "M",
     "special": "",
-    "seat": "8J"
+    "seat": "7A"
   },
   {
     "name": "Lincoln Carter",
@@ -1003,7 +1003,7 @@
     "weight": 101,
     "gender": "M",
     "special": "",
-    "seat": "8K"
+    "seat": "7B"
   },
   {
     "name": "Claus Bennett",
@@ -1016,7 +1016,7 @@
     "weight": 59,
     "gender": "M",
     "special": "",
-    "seat": "9A"
+    "seat": "7C"
   },
   {
     "name": "Angel Reyes",
@@ -1033,7 +1033,7 @@
     "weight": 72,
     "gender": "M",
     "special": "",
-    "seat": "9B"
+    "seat": "7D"
   },
   {
     "name": "Cintia Cox",
@@ -1046,7 +1046,7 @@
     "weight": 75,
     "gender": "F",
     "special": "",
-    "seat": "9C"
+    "seat": "7E"
   },
   {
     "name": "Dylan Ramos",
@@ -1060,7 +1060,7 @@
     "weight": 88,
     "gender": "M",
     "special": "",
-    "seat": "9D"
+    "seat": "7F"
   },
   {
     "name": "Stella Ramirez",
@@ -1073,7 +1073,7 @@
     "weight": 54,
     "gender": "F",
     "special": "",
-    "seat": "9E"
+    "seat": "7G"
   },
   {
     "name": "Janet Evans",
@@ -1084,7 +1084,7 @@
     "weight": 62,
     "gender": "F",
     "special": "",
-    "seat": "9F"
+    "seat": "7H"
   },
   {
     "name": "Joseph Jimenez",
@@ -1095,7 +1095,7 @@
     "weight": 95,
     "gender": "M",
     "special": "",
-    "seat": "9G"
+    "seat": "7J"
   },
   {
     "name": "Eleanor Nelson",
@@ -1107,7 +1107,7 @@
     "weight": 105,
     "gender": "F",
     "special": "",
-    "seat": "9H"
+    "seat": "7K"
   },
   {
     "name": "Hui Lee",
@@ -1119,7 +1119,7 @@
     "weight": 106,
     "gender": "M",
     "special": "",
-    "seat": "9J"
+    "seat": "8D"
   },
   {
     "name": "Maverick Wilson",
@@ -1133,7 +1133,7 @@
     "weight": 70,
     "gender": "M",
     "special": "",
-    "seat": "9K"
+    "seat": "8E"
   },
   {
     "name": "Mia Torres",
@@ -1146,7 +1146,7 @@
     "weight": 68,
     "gender": "F",
     "special": "",
-    "seat": "10A"
+    "seat": "8F"
   },
   {
     "name": "Ava Thompson",
@@ -1155,7 +1155,7 @@
     "weight": 84,
     "gender": "F",
     "special": "",
-    "seat": "10B"
+    "seat": "8G"
   },
   {
     "name": "Steven Evans",
@@ -1166,7 +1166,7 @@
     "weight": 63,
     "gender": "M",
     "special": "",
-    "seat": "10C"
+    "seat": "9D"
   },
   {
     "name": "Julian Rodriguez",
@@ -1181,7 +1181,7 @@
     "weight": 111,
     "gender": "M",
     "special": "",
-    "seat": "10D"
+    "seat": "9E"
   },
   {
     "name": "Arian Scott",
@@ -1193,7 +1193,7 @@
     "weight": 109,
     "gender": "M",
     "special": "",
-    "seat": "10E"
+    "seat": "9F"
   },
   {
     "name": "Leo Castillo",
@@ -1210,7 +1210,7 @@
     "weight": 75,
     "gender": "M",
     "special": "",
-    "seat": "10F"
+    "seat": "9G"
   },
   {
     "name": "Sebastien Long",
@@ -1224,7 +1224,7 @@
     "weight": 73,
     "gender": "M",
     "special": "",
-    "seat": "10G"
+    "seat": "10D"
   },
   {
     "name": "Anthony Collins",
@@ -1238,7 +1238,7 @@
     "weight": 65,
     "gender": "M",
     "special": "",
-    "seat": "10H"
+    "seat": "10E"
   },
   {
     "name": "Ivy Brown",
@@ -1252,7 +1252,7 @@
     "weight": 85,
     "gender": "F",
     "special": "",
-    "seat": "10J"
+    "seat": "10F"
   },
   {
     "name": "Dilan White",
@@ -1267,6 +1267,6 @@
     "weight": 77,
     "gender": "M",
     "special": "",
-    "seat": "10K"
+    "seat": "10G"
   }
 ]
