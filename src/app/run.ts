@@ -89,7 +89,7 @@ export function run() {
   for (const pax of unassignedFemaleMuslims) {
     const groupId = pax.group[0] as string;
     let isAssigned = false;
-    for (let i = 0; i < emptyABJKSeats.length; i++) {
+    for (let i = emptyABJKSeats.length - 1; i >= 0; i--) {
       const seat = emptyABJKSeats[i] as SeatNumber;
       const successful = tryAssignSeatToPassenger(
         seat,
